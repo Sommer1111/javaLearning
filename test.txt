@@ -1,2 +1,3 @@
 this is my first github
 add a new branch dev and quick
+add new merge
