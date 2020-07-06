@@ -1,4 +1,4 @@
-package DataStructureTest;
+package DataStructureTest.LinkedList;
 
 /**
  * 在单项链表的基础之上实现双向链表

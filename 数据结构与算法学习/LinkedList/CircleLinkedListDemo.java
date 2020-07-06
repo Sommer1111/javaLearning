@@ -1,4 +1,4 @@
-package DataStructureTest;
+package DataStructureTest.LinkedList;
 
 /**
  *
