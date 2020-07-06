@@ -1,16 +1,16 @@
 /**
- * ÒªÇó£ºÍ³¼ÆËùÓÐÐ¡ÓÚ·Ç¸ºÕûÊý n µÄÖÊÊýµÄÊýÁ¿¡£
- * Ë¼Â·£º
- * 1.Ñ­»·×ÔÔö±éÀú
- * 2.ÎÊÌâ£ºÈçºÎÅÐ¶ÏËØÊý¡£ÄÜÕû³ý2£¬3£¬5£¬7µÄ¾Í²»ÊÇ
+ * è¦æ±‚ï¼šç»Ÿè®¡æ‰€æœ‰å°äºŽéžè´Ÿæ•´æ•° n çš„è´¨æ•°çš„æ•°é‡ã€‚
+ * æ€è·¯ï¼š
+ * 1.å¾ªçŽ¯è‡ªå¢žéåŽ†
+ * 2.é—®é¢˜ï¼šå¦‚ä½•åˆ¤æ–­ç´ æ•°ã€‚èƒ½æ•´é™¤2ï¼Œ3ï¼Œ5ï¼Œ7çš„å°±ä¸æ˜¯
  *
  *
- * Ñ§Ï°£º
- * 1.Ìâ½âÊÇÒª¿¼ÂÇÊ±¼ä¸´ÔÓ¶ÈºÍ¿Õ¼ä¸´ÔÓ¶ÈµÄ£¬²»ÊÇµ¥´¿µÄ½â³öÀ´¾Í¿ÉÒÔÁË¡£
- * 2.ÓÅ»¯£¬ÌáÉýÐÔÄÜµÄµØ·½¡£
- *      ¢Ù ±éÀúµ½¸ùºÅn£¬²»ÓÃ±éÀúµ½n£¬Á½²¿·ÖÊÇ¶Ô³ÆµÄ¡£
- *      ¢Ú É¸·¨
- * 3.ÎªÊ²Ã´±ðÈËÒªÓÃÊý×é£¿ÒòÎªÍ¨¹ýÊý×é±ê¼Ç£¬if£¨£©ÅÐ¶ÏÒ»½áºÏÖ±½Ó¾Í¼õÉÙÁËÅÐ¶ÏµÄ´ÎÊý ¡°°£À­ÍÐË¹ÌØÄáÉ¸·¨¡±
+ * å­¦ä¹ ï¼š
+ * 1.é¢˜è§£æ˜¯è¦è€ƒè™‘æ—¶é—´å¤æ‚åº¦å’Œç©ºé—´å¤æ‚åº¦çš„ï¼Œä¸æ˜¯å•çº¯çš„è§£å‡ºæ¥å°±å¯ä»¥äº†ã€‚
+ * 2.ä¼˜åŒ–ï¼Œæå‡æ€§èƒ½çš„åœ°æ–¹ã€‚
+ *      â‘  éåŽ†åˆ°æ ¹å·nï¼Œä¸ç”¨éåŽ†åˆ°nï¼Œä¸¤éƒ¨åˆ†æ˜¯å¯¹ç§°çš„ã€‚
+ *      â‘¡ ç­›æ³•
+ * 3.ä¸ºä»€ä¹ˆåˆ«äººè¦ç”¨æ•°ç»„ï¼Ÿå› ä¸ºé€šè¿‡æ•°ç»„æ ‡è®°ï¼Œifï¼ˆï¼‰åˆ¤æ–­ä¸€ç»“åˆç›´æŽ¥å°±å‡å°‘äº†åˆ¤æ–­çš„æ¬¡æ•° â€œåŸƒæ‹‰æ‰˜æ–¯ç‰¹å°¼ç­›æ³•â€
  *
  * @Auther:sommer1111
  * @date 2020/6/15 15:11
@@ -23,12 +23,12 @@ public class _07_PrimesJudge {
         System.out.println(countPrimes2(100000));
     }
 
-    //²»ÖªµÀÎªºÎ£¬µ±²âÊÔÓÃÀý1000000ºÜ´óÊ±¾Í³öÎÊÌâÁË¡£
-    //Âß¼­³öÁËÎÊÌâ£¬ÎÒÕâÑùÎÞ·¨ÅÐ¶ÏÖÊÊýÓëÖÊÊýµÄ±¶Êý
-    //Ê±¼ä¸´ÔÓ¶È£ºO(n)£¬±©Á¦Çó½â
+    //ä¸çŸ¥é“ä¸ºä½•ï¼Œå½“æµ‹è¯•ç”¨ä¾‹1000000å¾ˆå¤§æ—¶å°±å‡ºé—®é¢˜äº†ã€‚
+    //é€»è¾‘å‡ºäº†é—®é¢˜ï¼Œæˆ‘è¿™æ ·æ— æ³•åˆ¤æ–­è´¨æ•°ä¸Žè´¨æ•°çš„å€æ•°
+    //æ—¶é—´å¤æ‚åº¦ï¼šO(n)ï¼Œæš´åŠ›æ±‚è§£
     public static int judge(int n){
         int count =0;
-        //¿ÉÒÔÔö¼ÓÒ»¸öÅÐ¶ÏnÊÇ·ñ·ûºÏ·¶Î§
+        //å¯ä»¥å¢žåŠ ä¸€ä¸ªåˆ¤æ–­næ˜¯å¦ç¬¦åˆèŒƒå›´
         for (int i = 1; i <n; i++) {
 
             if(i <= 10){
@@ -42,22 +42,22 @@ public class _07_PrimesJudge {
         return count;
     }
 
-    //²Î¿¼
+    //å‚è€ƒ
     public static int countPrimes1(int n) {
         int result = 0;
-        boolean[] b = new boolean[n];   // ³õÊ¼»¯Ä¬ÈÏÖµ¶¼Îª false£¬ÎªÖÊÊý±ê¼Ç
-        if(2 < n) result++; // Èç¹û´óÓÚ 2 ÔòÒ»¶¨ÓµÓÐ 2 Õâ¸öÖÊÊý
+        boolean[] b = new boolean[n];   // åˆå§‹åŒ–é»˜è®¤å€¼éƒ½ä¸º falseï¼Œä¸ºè´¨æ•°æ ‡è®°
+        if(2 < n) result++; // å¦‚æžœå¤§äºŽ 2 åˆ™ä¸€å®šæ‹¥æœ‰ 2 è¿™ä¸ªè´¨æ•°
 
-        for(int i = 3; i < n; i += 2){  // ´Ó 3 ¿ªÊ¼±éÀú£¬ÇÒÖ»±éÀúÆæÊý£¬2µÄ±¶ÊýÉ¸³ö
-            if(!b[i]){  // ÊÇÖÊÊý
-                //·ÖÎö£º
-                //3³õÊ¼ÊÇfalse£¬È»ºó½øÈëÑ­»·£¬°Ñ3*3=9¡¢3*5=15¡¢3*7=21.....¶¼±ê¼ÇÍêÁËÉ¹³öÁËÒ»²¿·Ö
-                //5µÄ±¶Êý
-                //7µÄ±¶Êý
+        for(int i = 3; i < n; i += 2){  // ä»Ž 3 å¼€å§‹éåŽ†ï¼Œä¸”åªéåŽ†å¥‡æ•°ï¼Œ2çš„å€æ•°ç­›å‡º
+            if(!b[i]){  // æ˜¯è´¨æ•°
+                //åˆ†æžï¼š
+                //3åˆå§‹æ˜¯falseï¼Œç„¶åŽè¿›å…¥å¾ªçŽ¯ï¼ŒæŠŠ3*3=9ã€3*5=15ã€3*7=21.....éƒ½æ ‡è®°å®Œäº†æ™’å‡ºäº†ä¸€éƒ¨åˆ†
+                //5çš„å€æ•°
+                //7çš„å€æ•°
                 for(int j = 3; i * j < n; j += 2){
-                    b[i * j] = true;    // ½«µ±Ç°ÖÊÊýµÄÆæÊý±¶¶¼ÉèÖÃ³É·ÇÖÊÊý±ê¼Ç true
+                    b[i * j] = true;    // å°†å½“å‰è´¨æ•°çš„å¥‡æ•°å€éƒ½è®¾ç½®æˆéžè´¨æ•°æ ‡è®° true
                 }
-                result++;   // ÖÊÊý¸öÊý +1
+                result++;   // è´¨æ•°ä¸ªæ•° +1
             }
         }
         return result;
@@ -66,7 +66,7 @@ public class _07_PrimesJudge {
     public static int countPrimes2(int n) {
         boolean[] isPrim = new boolean[n];
 
-        for (int i = 2; i * i < n; i++) {//Ö»Òª±éÀúµ½¸ùºÅn¾Í¿ÉÒÔÁË
+        for (int i = 2; i * i < n; i++) {//åªè¦éåŽ†åˆ°æ ¹å·nå°±å¯ä»¥äº†
             if (!isPrim[i]) {
                 for (int j = i * i; j < n; j += i) {
                     isPrim[j] = true;

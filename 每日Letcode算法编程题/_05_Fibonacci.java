@@ -1,19 +1,19 @@
 package Algorithm_ex;
 
 /**
- * �ܽ᣺
- * 1.���Ƚϴ�ʱ�õݹ����Ǻ�ʱ��
- *   �Ż�������
- *          * ��ֵ�����鱣���м������ȱ�㣺��������Խ�磬�����Ҫ���顣
- *          * �����м������ֱ���ͷ���Դ��
- * 2.����ȽϺ�ʱ�����Բ��ü�ȥ1000000007
+ * 总结：
+ * 1.数比较大时用递归总是耗时：
+ *   优化方法：
+ *          * 赋值给数组保存中间变量，缺点：容易数组越界，情况需要分情。
+ *          * 利用中间变量，直接释放资源。
+ * 2.求余比较耗时，可以采用减去1000000007
  *
  * @Auther:sommer1111
  * @date 2020/6/9 8:31
  */
 public class _05_Fibonacci {
     public static int fib(int n) {
-        //�õ���������ǳ�ʱ
+        //用迭代完成总是超时
         if(n<2){
             return n;
         }else{
@@ -21,7 +21,7 @@ public class _05_Fibonacci {
         }
     }
 
-    //�Ż�1���������ÿһ�εĽ���洢����,����������������������Խ�硣��Ҫ�������
+    //优化1：用数组把每一次的结果存储起来,遇到的问题试试容易数组越界。需要格外分类
     public static int fib2(int n){
         if(n<2){
             return n;
@@ -37,7 +37,7 @@ public class _05_Fibonacci {
 
     }
 
-    //�Ż�2�������м���� temp
+    //优化2：借助中间变量 temp
     public static int  fib3(int n){
         if(n<2){
             return n;
