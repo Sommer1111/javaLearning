@@ -69,9 +69,9 @@ public class Sorting {
         String str1 = s.format(date);
         System.out.println("排序前的时间是："+str1);
 
-        //selectSort(test);//15s
-        //insertSort(test);//1s
-        //shellSort(test);//30s
+        //selectSort(Algorithm_ex.test);//15s
+        //insertSort(Algorithm_ex.test);//1s
+        //shellSort(Algorithm_ex.test);//30s
         shellSort2(test);//1s
         //可见插入排序不必每个都要交换，移位，所以性能较高
 
