@@ -1,6 +1,4 @@
-package DataStructureTest;
-
-import java.sql.SQLOutput;
+package DataStructureTest.Exception;
 
 /**
  * 入栈中缀表达式法实现计算： 2*5+2/3-5
@@ -29,8 +27,9 @@ import java.sql.SQLOutput;
  * 最后都是同优先级的就可以不用考虑先后的问题。
  *
  * 3.考虑多位数，需要在index时考虑后一个数是否依旧是数字，然后拼接。
- *     ---多位数拼接index也要相应的变化，不然会重复计算
- *     ---拼接使用的中间变量要清零，不然会越来越长
+ * 注意：
+ *    ---多位数拼接index也要相应的变化，不然会重复计算
+ *    ---拼接使用的中间变量要清零，不然会越来越长
  *
  * 4.考虑小括号、大括号存在时的继续分类讨论。
  * 
