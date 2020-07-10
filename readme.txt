@@ -1,8 +1,18 @@
-这是菜鸟的java初学者仓库。
-如果刚好你也是java初学者，欢迎一起交流。
-本仓库将跟随学习，持续更新。
-新加入了算法编程练习题
-现在是IDEA里面的Git测试使用
+@[TOC](这是菜鸟的java学习仓库，持续更新中。
+# 学习路线
+# 具体介绍
+## [java](https://github.com/Sommer1111/javaLearning/tree/master/Java)
+## 实用工具一：
+### [Git](https://github.com/Sommer1111/javaLearning/tree/master/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
+### [Linux](https://github.com/Sommer1111/javaLearning/tree/master/Linux%E5%AD%A6%E4%B9%A0)
+## [数据结构与算法](https://github.com/Sommer1111/javaLearning/tree/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0)
+## [操作系统与计算机网络](https://github.com/Sommer1111/javaLearning/tree/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C)
+## 数据库MySQL
+## Web前端
+## 实用工具二：
+### Maven
+### Docker
+## JavaWeb
 
 【我的学习心得】：
      *
