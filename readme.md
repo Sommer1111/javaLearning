@@ -1,6 +1,41 @@
-# 一、学习路线：
+仓库目录
+=================
 
-&nbsp;
+   * [一、学习路线：](#一学习路线)
+      * [<a href="https://github.com/Sommer1111/javaLearning/tree/master/Java">java</a>](#java)
+         * [视频资源](#视频资源)
+         * [书籍资源](#书籍资源)
+         * [总结](#总结)
+      * [2.实用工具一：](#2实用工具一)
+         * [<a href="https://github.com/Sommer1111/javaLearning/tree/master/Git基础知识">Git</a>](#git)
+            * [第一步：了解Github](#第一步了解github)
+            * [第二步：了解git](#第二步了解git)
+            * [第三步：了解使用IDEA里面内置的Git](#第三步了解使用idea里面内置的git)
+            * [四、资源推荐](#四资源推荐)
+         * [<a href="https://github.com/Sommer1111/javaLearning/tree/master/Linux学习">Linux</a>](#linux)
+            * [第一步：对比视频，学习“尚硅谷的Linux教程”。](#第一步对比视频学习尚硅谷的linux教程)
+            * [第二步：理解【linux的架构】](#第二步理解linux的架构)
+      * [<a href="https://github.com/Sommer1111/javaLearning/tree/master/数据结构与算法学习">数据结构与算法</a>](#数据结构与算法)
+         * [资源](#资源)
+         * [书籍](#书籍)
+         * [总结](#总结-1)
+      * [<a href="https://github.com/Sommer1111/javaLearning/tree/master/操作系统与计算机网络">操作系统与计算机网络</a>](#操作系统与计算机网络)
+      * [【操作系统】篇](#操作系统篇)
+            * [第一步：理解操作系统](#第一步理解操作系统)
+            * [第二步：资源推荐](#第二步资源推荐)
+      * [【计算机网络】篇](#计算机网络篇)
+            * [第一步：理解计算机网络](#第一步理解计算机网络)
+            * [第二步：资源推荐](#第二步资源推荐-1)
+      * [数据库MySQL](#数据库mysql)
+      * [Web前端](#web前端)
+      * [实用工具二：](#实用工具二)
+         * [Maven](#maven)
+         * [Docker](#docker)
+      * [JavaWeb](#javaweb)
+      
+
+***
+# 一、学习路线：
 ## [java](https://github.com/Sommer1111/javaLearning/tree/master/Java)
 ### 视频资源
 - **B站黑马视频**，一直看到换老师，这一段老师讲的很好。基本对Java的**框架**就出来了，以及一些基本的**规则**。
