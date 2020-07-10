@@ -2,7 +2,7 @@
 
 # 一、学习路线：
 
-
+&nbsp;
 ## [java](https://github.com/Sommer1111/javaLearning/tree/master/Java)
 ### 视频资源
 - **B站黑马视频**，一直看到换老师，这一段老师讲的很好。基本对Java的**框架**就出来了，以及一些基本的**规则**。
@@ -18,6 +18,8 @@
 - 缺少自己相关的延伸和疑问思考，一定要考虑为什么这样写，以及老师写出来的代码、功能是否能优化
 - 缺少练习，视频就看敲一遍就觉得学完了。多敲
 - 复习。忘记的快，只能通过常用多练实践出真知。
+&nbsp;
+
 ## 2.实用工具一：
 ***
 ###  [Git](https://github.com/Sommer1111/javaLearning/tree/master/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
