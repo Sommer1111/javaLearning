@@ -47,6 +47,7 @@ public class _07_10_twoSum {
         Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i],i);//这样放可以根据get直接获得i判断是否相同
+            //再次验证了我的不要拘泥于具体的代码。从中学思路。能实现殊途同归嘛。
         }
         for (int i = 0; i < nums.length; i++) {
             int other = target-nums[i];
