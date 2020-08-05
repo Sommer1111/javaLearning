@@ -1,0 +1,192 @@
+<!--
+一、初次使用注意事项
+1. 直接使用！+Tab键 可以直接生成网页的框架
+2.设置下载live service ，就可以右键open with live service 直接打开
+3.设置自动保存：首选项-常用设置Auto-save
+
+二、课上笔记（不太理解的话直接打开网页查看网页源码就清晰了）
+HTML 不是一种编程语言，而是一种标记语言，标记语言是一套标记标签，来描述网页
+HTML 标签可以拥有属性。属性提供了有关 HTML 元素的更多的信息。
+属性值应该始终被包括在引号内。双引号是最常用的，不过使用单引号也没有问题
+
+1. 实体：转移符号（当某些字符需要显示但是与语法关键字冲突时使用的折中办法）
+  &nbsp; 显示空格
+  &gt;   显示大于号
+  &lt;   显示小于号
+  &copy; 显示版权符号
+  在 W3CSchool 网站里面可以查找更多更全的实体
+
+2. meta 元数据（写给浏览器看的，不会显示在网页中，具有固定格式，name = " ",content = " "）
+  <meta name = "keywords",content = "这表示显示在浏览器里面的网页关键字">
+  <meta name = "description",content = "这标志显示在搜索出的网站的描述">
+  <title> 这部分的内容会显示在搜索显示的超链接上</title>
+  <meta charset="UTF-8"> 表示网页的编码格式
+  <meta http-equiv="refresh" content="3;url = 跳转网址">，表示3秒之后会自动跳转到莫某个网址
+
+3. 语义化标签：相当于这个符号表达的意义，不必在意其格式上的不同，因为这些都可以修改
+   
+  3.1 块元素：独占一行，用块元素对网页布局进行编辑
+   
+  3.1.1 基本常用的标签
+   <h1></h1>,h1-h6，表示标题的语义，可以创建一个hgroup把相关的标题放到一起。此标签只用于标题。
+   不要仅仅是为了产生粗体或大号的文本而使用标题。搜索引擎使用标题为网页的结构和内容编制索引。
+
+   <p></p>,表示段落的语义，插入<br/>可以换行
+   <bolckquote>,代表对别人话语内容的引用
+
+  3.1.2 *html5新增的区块语义标签，用的并不是很多
+   <header></header>块的头部  <main></main>块的主体中间部分  <footer></footer>块的底部
+   <nav></nav> 导航（如学校官网上的学院 师资 招生那一栏） <aside></aside> 表示边栏（如相关导航）。。。
+   最常用的还是 <div></div>这个老的,直接代表块，相当于一个总称。
+
+  3.1.3 列表：块结构中的一种，不同的列表类型可以相互嵌套使用
+   *无序列表
+     <ul type="circle">可以设置原点的格式
+       <li> li为list item 的缩写，表示每一项，如果没有的话相当于创建了空的列表</li>
+       <li> 这种是用的最多的 </li>
+     </ul>
+   *有序列表
+     <ol>
+       <li>有序列表里面的每一项，但是一般不怎么使用这个，因为不同浏览器显示会略微不一样，这样是不好的</li>
+     </ol>
+   *定义列表
+     <dl>
+       <dt> 定义名称</dt>
+       <dn> 定义内容</dn>
+     </dl>
+   
+
+  3.2 行内元素：和其它内容共用一行，行内元素里面不应该放块元素的标签
+   
+  3.2.1 基本常用的标签
+   + 文本格式化输出标签：加粗、斜体、删除线、下划线类
+       <b>加粗</b>
+       <em>语音语调的加重</em>
+       <strong>对内容的强调</strong>
+   + 引用类标签：<q>短引用</q>
+   + 计算机输出标签：<kbd>, <samp>, <code> ，<pre>
+   + <span></span>，与<div>相对应，就是一般的行元素语义
+   
+
+   注意：如果位置放错了，或者不符合要求，浏览器在渲染显示时，加载到内存中会自动对内容进行修正，
+   但是不会修改源码。右键-检查，里面可以看到源码加载到内存中最后的样子。
+
+
+  3.2.2 超链接：用属性 href="  " 实现跳转
+    * 可以跳转站外网址（绝对路径）: <a herf="www.baidu.com">超链接的显示名字</a>
+    * 也可以跳转自身网页（相对路径放在同一个项目下的网页子文件跳转）的位置:
+        + ./ 表示当前文件目录，如此文件的当前文件目录就是HTML上课，可以不写。默认带上
+        + ../ 表示当前文件目录的上一层文件目录
+            <a herf="hello.html">超链接的显示名字</a>
+    * 在本页面内跳转
+       + 跳转到页面底部：<a herf="#"> 跳转到底部 </a>
+       + 跳转到页面任何位置，引入属性标识 id="任意字符数字组合"，但必须独一无二.使用非常多
+         <a herf="#p3"> 跳转到 id号为p3 的位置</a>
+         <p id = "p3"> 跳转到 id号为p3 的位置</p>
+       + 如果暂时不知道跳转到哪个位置，先设置占位符。
+         <a herf="#"> 用#号标识占个位，但是会有跳转的操作</a>
+         <a herf="javascript:;"> 纯占位符，无任何反应</a>
+
+    * 设置跳转是否打开新的页面，通过属性 target 设置
+       + target = "_blank",打开新的标签页显示，比如百度
+       + target = "_self" ，在当前网页打开超链接，比如谷歌
+
+  3.3 替换元素（介于行内元素与块元素之间，它并没有显示自身，而是显示了自身引用的东西）
+   
+   3.3.1 图片（与超链接类似）
+     <img src="图片路径，可以是本项目下的路径，也可以是外部的链接路径"，alt = "图片的描述，用于搜索引擎识别">
+     <img width= "设置图片的宽度，长宽是一起缩放的">
+     <img heigth= "一般不建议去改图片的大小">
+
+   3.3.2 图片格式，使用原则，效果相同用小的，效果不同用好的。
+     + jpg, 颜色丰富，不支持透明。
+     + gif，动图，颜色少。
+     + png，颜色丰富，支持透明，内存小，专门为网页而生。
+     + webp，谷歌新推出，集前三者优点于一体，问题容易出现不兼容。
+     + base64, 图片经编码规则转化的的一串编码。优点是可以和网页同时加载。
+
+   3.3.3 内联框架：直接在网页中插入一个网页显示,无法被搜索引擎搜索到
+     <iframe src = "www.baidu.com" width = 800,height = "自己设定显示的宽高"></iframe>
+     <iframe src = "www.baidu.com" iframeborder = "0/1，设置有无边框"></iframe>
+
+   3.3.4 音频
+     属性：
+       + controls：设置是否用于用户自己控制播放
+       + autoplay：自动播放，一般设置了也不会自动播放
+       + loop ：循环播放
+     <audio src = "路径" ></audio>
+     <audio src = "路径" controls loop autoplay ></audio>
+
+     考虑兼容的问题：一般会使用以下的方式进行
+     <audio controls>
+       对不起，你的浏览器格式不兼容！无法播放音频（播放不出时显示文字，可以对用户更友好）
+       <source src = "路径" type="type/mp3,表示格式">
+       <source src = "支持写多个路径" type="type/mp3,表示格式">
+       <source src = "会从上至下的选择播放，不能播放则下一个，是应对格式不兼容的方法" type="type/mp3,表示格式">
+     </audio>
+
+     再不济，使用嵌套实现
+      <embed type="video/webm" src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4"
+       width="250" height="200">
+
+
+
+   3.3.5 视频，使用完全与音频相同。
+    示例：
+    <video controls width="250">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm" type="video/webm">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4" type="video/mp4">
+        Sorry, your browser doesn't support embedded videos.
+    </video>
+
+   3.3.6 表格，每个表格由 table 标签开始。表格行由 tr 标签开始。表格数据由 td 标签开始。
+      <th>显示表头，
+   如下显示一行两列数据
+    <table border="1" bgcolor = "yellow" background="/i/eg_bg_07.gif">显示表格的边框宽度，背景颜色、图案
+      <tr>
+      <th>Heading</th>
+      <th>Another Heading</th>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>100</td>
+      </tr>
+    </table>
+
+  3.4 常用的属性：
+   3.4.1 style
+    <body style = "background-color:yellow"></body>：设置背景颜色
+    <p style = "font-family:Arial;color:red;font-size:30px"></p>:设置文字属性
+    <p style = "text-align:center"></p>:设置对齐方式
+    <body background="/i/eg_background.jpg">:增加背景图片
+
+
+
+
+
+
+
+  
+  
+
+
+   
+
+  
+
+
+-->
+<!DOCTYPE html>
+<html lang="zh"><!--这里提示中文用zh，告诉浏览器是英文则en-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="学习 搜索 兴趣">
+    <meta name="description" content="这是一个具有强大功能的网页">
+    <title>这里是初学者之家</title>
+    <meta http-equiv="refresh" content="3;url = 跳转网址">
+    
+</head>
+<body>
+    
+</body>
+</html>
