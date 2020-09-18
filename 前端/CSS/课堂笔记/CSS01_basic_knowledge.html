@@ -1,0 +1,304 @@
+<!--
+一、CSS课堂笔记
+
+    CSS:层叠样式表，网页渲染分很多层，浏览器最终显示最后一层
+    作用：改变网页的样式
+
+1.改变网页样式的方法
+    1.1 通过style 来改变(内联样式，只能对一个标签生效，低效不易于维护，开发不要使用)
+     <p style = "color:red;font-size: 30px;">窗前明月光，疑是地上霜</p>
+
+    1.2 在head部分创建一个style区来实现。缺点是只能对当前页面有效。
+      <head>
+        <style>
+          p{对本页面的所有段落都生效
+            color:red;
+            font-size: 30px;
+          }
+        </style>
+      </head>
+
+    1.3 专门创建一个css文件来存放格式，在网页中用 link 引入,对整个项目都可以有效
+      <head>
+         <link rel="stylesheet" href="./style.css">
+      </head>
+
+2. CSS的基本语法
+  2.1 style 已经是属于CSS的部分了，不能使用html的规则来写
+
+  2.2 注释
+      /* 
+         这里面是注释
+      */
+
+  2.3 语法构成 选择器{声明块}
+      p{//p代表选择所有段落格式
+         color:red;代表每一句声明，设置为元素设置的样式
+         font-size: 30px;
+
+      }
+
+    1.3.1 选择器的种类
+
+      ① 选中一行，用id
+      <head>
+        <style>
+          #select1{对指定id其作用
+            color : red;
+          }
+        </style>
+      </head>
+      <p id = select1>这是第一种选择器id号</p>
+
+      ② 选中多行，用class
+      <head>
+        <style>
+          .select2{对指定类其作用
+            color : red;
+          }
+        </style>
+      </head>
+      <p class = select2>这是第二种选择器id号</p>
+      <p class = select2>可以选择多处</p>
+      <p class = select2>放在同一个类别一样</p>
+
+      ③ 选中所有段落p 、选中所有标题 h1、选择所有块 div 同样
+
+      ④ 通配符 *，选择页面所有内容
+      <head>
+        <style>
+          *{对指定类其作用
+            color : red;
+          }
+        </style>
+      </head>
+
+    1.3.2 复合选择器
+   
+      ① 多个类的实现一样（取并集）：选择器，选择器
+      p,h1,select1{
+        color: red;
+      }
+
+      ② 同一类中选某个（取交集）：选择器选择器选择器
+      h1.select2{
+        font-size : 30px;
+      }
+
+    1.3.3 关系选择器
+    父类、子类、祖先类、后代类、兄弟类
+
+    div > span{//父子关系的表达
+            color : yellow;
+        }    
+
+    div span{//祖先后代的表达
+            color : magenta;
+        }
+
+    p+span{//p+它后面的第一个兄弟
+           color : tomato;
+       } 
+
+    p~span{//p+它后面所有的兄弟
+           color : blue;
+       }
+
+    <body>
+     <div>
+        <p>我是子类</p>
+        <span>我是子类后面的兄弟</span>
+        <span>我是子类的其它兄弟</span>
+        <div>
+            <span>我是后代类</span>
+            <p>第一个div是它的祖先类</p>
+        </div>
+     </div>
+    </body>
+
+
+    1.3.5 属性选择器：按属性来选择
+    p[tltle]{
+      font-size = 12px; //所有含title属性的p段落
+    }
+    p[title="123"]{//属性就是为title的段落才会有这种效果
+           font-weight: 100;
+       }
+    p[title^="123"]{属性以123开头的所有段落
+           font-weight: 100;
+       }
+
+    <p title="123"></p>
+    <p title="1234"></p>
+    <p title="0123"></p> “title$=123”设置属性以123结尾的所有段落
+    <p title="1233"></p> “title*=123”设置属性含123的所有段落
+
+
+    1.3.6 伪类选择器：伪类既不是固定的类，会随着操作而发生变化。
+
+    ① 位置类的相对关系
+    :first-child 第一个元素
+    :last-child 最后一个元素
+    :nth-child 第几个元素
+    :first-of-type 此类型下的第一个元素
+    :not(),除哪个元素之外
+
+    ul>li:first-of-type{//设置ul下的li里面第一个元素
+           color: magenta;
+       }
+    ul>li:not(:first-of-type){//设置ul下的li里面除第一个元素之外
+           color: magenta;
+       }
+
+    ② 鼠标类的相对关系
+    :link，正常链接的显示颜色 
+    :visited，点击后的链接显示颜色
+    :hover，鼠标移动到的显示颜色
+    :active，鼠标点击的显示颜色
+
+    a:active{
+           font-size: 50;;
+       }
+
+    <a href="www.baidu.com"></a>\
+
+    1.3.7 伪元素选择器，相对应于类的元素关系。比如位置关系、选中内容
+    ::first-letter:第一个元素
+    ::select：鼠标选中的内容
+    ::before：开始前面的位置，因为这个位置没有任何空间，所以需要结合 content插入元素才能看出效果
+    ::after：最末尾的位置
+
+    div::first-letter{
+      font-size:30px;
+    }
+
+  2.4 继承和优先级（权重）
+   继承：子类也会默认具备父类的各种属性，但是类似于background这一类不会继承
+   优先级：当选中的元素有多个属性，并且不同的属性设置了不同的样式时，就会按优先级的高低设置。
+       内联样式 > id >伪类 > 伪元素 > 统配符* >  继承
+       可以在后面加上 !important，改变优先级，多个元素的优先级是相加的但是不会超过上一级的值。
+      p{
+          background-color : yellow !important;
+      }
+
+  2.5 长度单位：
+     ① 相素，px
+     ② 百分比，相对于父类该元素属性的占比
+     ③ em：1 em代表一个字体大小，会随字体大小而发生改变
+     ④ rem：相对于根元素的字体大小
+
+  2.6 颜色
+    ① RGB：三原色 0-255 (0%-100%)
+    ② RGBA：加上透明色
+    ③ HSL：色相(0-360)、饱和度、亮度 (0%-100%)
+
+    background-color:rgb(1, 2, 3);
+    background-color:hsl(360, 70, 70);
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Css测试</title>
+    <style>
+        p{
+            color:red;
+            font-size: 30px;
+        }
+        #select1{
+            color : red;
+          }
+
+        .select2{
+            color : red;
+          }
+
+        p,h1,select1{
+             color: red;
+          }
+
+        h1.select2{
+             font-size : 30px;
+          }
+
+        div > span{
+            color : yellow;
+        }    
+
+        div span{
+            color : magenta;
+        }
+
+       p+span{
+           color : tomato;
+       } 
+
+       p~span{
+           color : blue;
+       }
+
+       p[title]{
+           font-weight: 100;
+       }
+       p[title="123"]{
+           font-weight: 100;
+       }
+       p[title^="123"]{
+           font-weight: 100;
+       }
+
+       ul>li:first-of-type{
+           color: magenta;
+       }
+
+       a:active{
+           font-size: 50;;
+           background-color:rgb(1, 2, 3);
+           background-color:hsl(360, 70, 70);
+       }
+       
+
+    </style>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body>
+    <p style = "color:red;font-size: 30px;">窗前明月光，疑是地上霜</p>
+
+    <p class = select2>这是第二种选择器id号</p>
+    <p class = select2>可以选择多处</p>
+    <p class = select2>放在同一个类别一样</p>
+    <p id = select1>这是第一种选择器id号</p>
+
+
+    <div>
+        <p>我是子类</p>
+        <span>我是子类后面的兄弟</span>
+        <span>我是子类的其它兄弟</span>
+        <div>
+            <span>我是后代类</span>
+            <p>第一个div是它的祖先类</p>
+        </div>
+    </div>
+
+    <p title="123"></p>
+    <p title="1234"></p>
+    <p title="0123"></p>
+    <p title="1233"></p>
+    <p title="1233"></p>
+
+
+    <ul>
+        <li>第一行</li>
+        <li>第二行</li>
+        <li>第三行</li>
+        <li>第四行</li>
+        <li>第五行</li>
+    </ul>
+
+    <a href="www.baidu.com"></a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+clearfix::beafore,
+clearfix::after{
+    content:'';
+    display:table;
+    clear:both;
+}
+
+.w{
+    width: 1190px;
+    margin:0 auto;
+}
+
+
+
+body{
+    font:12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+    color:#666;
+    min-width: 1190px;
+    background-color:#E3E4E5
+}
+
+a{
+    text-decoration:none;
+    color: #b0b0b0;
+    font-size:12px;
+}

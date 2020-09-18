@@ -1,0 +1,72 @@
+
+<!-- 利用DOM 实现图片的点击循环切换 -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pic {
+            width: 500px;
+            margin: 50px auto;
+            text-align: center;
+        }
+    
+        img {
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+            var obj = document.getElementsByTagName("img")[0];
+            var imglist = ["./img/img01.jpg","./img/img02.jpg",
+               "./img/img03.jpg","./img/img04.jpg","./img/img05.jpg"];
+            var index = 0;
+
+            // 先绑定按钮
+            var pre = document.getElementById("pre");
+            var next = document.getElementById("next");
+            var info = document.getElementById("info");
+            info.innerHTML = "共有"+imglist.length+"张照片，当前为第"+(index+1)+"张";
+           
+
+           
+            pre.onclick = function(){
+                index--;
+                if(index<0){
+                    index = imglist.length-1;
+                }
+                 //再设置点击后属性的变化
+                obj.src = imglist[index];
+                info.innerHTML = "共有"+imglist.length+"张照片，当前为第"+(index+1)+"张";
+
+            };
+
+            
+            next.onclick = function(){
+                index++;
+                if(index>imglist.length-1){
+                    index = 0;
+                }
+                obj.src = imglist[index];
+                info.innerHTML = "共有"+imglist.length+"张照片，当前为第"+(index+1)+"张";
+            };
+
+            // 在绑定需要修改的图片属性
+        };
+    </script>
+</head>
+<body>
+    <div class="pic">
+        <p id="info"></p>
+        <img src="./img/img01.jpg" alt="图片">
+        <button id = "pre">上一张</button>
+        <button id = "next">下一张</button>
+    </div>
+    
+    
+</body>
+</html>

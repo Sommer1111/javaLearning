@@ -1,0 +1,488 @@
+<!-- 
+    JavaScript 是一种面对对象的 动态 网页脚本编程语言。
+        |---变量是动态的，类型不固定。
+        |---脚本的意思是解释型语言，运行一句解释一句，解释完一句才继续往下执行。
+        |---JavaScript 函数是一种代码块，如发生事件时调用执行。
+        |---使用Unicode作为字符集，对大小写敏感
+
+Javascript 由三部分构成，ECMAScript，DOM和BOM。
+   IE和其他的浏览器风格迥异,IE 扩展了 BOM，加入了 ActiveXObject 类，
+   |---ECMAScript(核心)，描述了JS的语法和基本对象
+   |---DOM，处理网页内容的方法和接口。所有浏览器公共遵守的标准
+   |---BOM，提供与浏览器交互的方法和接口。
+
+
+javaScript基本语法内容：
+
+    一、基础内容
+     1. 放置位置：
+        |---head中
+        |---body里面也可以（此时放置于后面。可以改善显示速度，因为脚本语言的编译会费时间。）
+        |---例外设置文件 .js (最主要的方式),用多少个，引多少个。
+              <script src = "javaScript.js"></script>
+
+     2. 输出显示
+        |---document.write("输出在网页中显示")
+        |---console.log("输出在控制台显示")
+        |---windows.alert("输出在弹出框中显示")
+        |---innerHTML 获取此时某属性 html的值
+
+
+
+    二、基本语法
+       1.变量
+          |--字面量：常量
+          |--变量 
+             var a = 5;
+          |-- 数组 
+             var car = ["bicycle","txic","train"]
+             var car = new Array("bicycle","txic","train")
+
+       2. 基本数据类型，判读数据类型：typeof a  ,instanceof
+             |---字符串 string
+             |---数字 number,64位的浮点型
+             |---布尔型 boolean
+             |---未定义 undefined
+             |---空 null
+
+          引用数据类型
+             |---对象 object {},对象无法进行对比始终返回false
+
+       3.基本数据类型转换
+          |--- 数字和字符串相加，结果将是字符串。
+          |--- 数字字符串运算中，将字符串转换为数字在算：
+          |--- 所有具有“真实”值的都为 True
+
+          |--- 类型转换：字符串转数字：
+               |--parseInt()、parseFloat()
+               |--Number("123") ,如果不能转换则返回 NaN
+               |--一元的 + 运算符可用于把变量转换为数字  +"5"  实现将字符 5 转化为数字5
+
+                  
+       4. 运算符： 
+           |--单目运算符：+   -   *   /   
+           |--逻辑运算符：&&   ||   !   ==   !=
+              == 只比较值，而 === 比较值和类型
+           |--三目运算符：(a>b) ? a:b;
+
+       5.0x 表示16进制、0表示8进制，0b表示2进制
+          toString(1234,2)转化成二进制
+
+        
+       6.结构 if else、switch 、for、for in、while 、try catch、finally同java
+
+       7.提升（Hoisting）将声明移至顶部的默认行为
+
+       8.严格模式："use strict";不允许使用未声明的变量，让代码更严谨安全
+
+       9.var定义的变量即使在{}里也具有全局作用域，改变也会改变外面的同名变量值，使用 let 限制
+
+      
+
+
+    三、函数function
+      1.基本结构：
+         function myFunction(a,b){
+            return a*b;
+        }
+
+      2.数据对象
+      |---String() 方法
+         |---indexof("abc")、length()、支持正则表达式search()、charAt()
+         |---索引可正可负：slice(1,3),索引只正substring(1,3)、第二参数为长度substr(1,3)
+         |---replace(a,b)、split()
+         |---toUpperCase()、toLowerCase()
+         |---合并concat()、删除空白trim()
+
+      |--Number() 方法
+         |--toFixed() 返回指定位数小数的数字的字符串，适合处理金钱
+         |--toPrecision() 返回指定长度的数字的字符串
+         |--valueOf() 以数值返回数值
+
+      |--Array() 数组，数组使用数字索引，对象使用命名索引
+         |--length()
+         |--sort()、reverse()
+            可以定制排序方式 points.sort(function(a, b){return b - a});
+         |--forEach()，循环遍历，map()、filter()、reduce()、every()、some()、find()
+         |--push()，结尾处添加元素
+         |--toString()
+         |--join()，将所有元素合并·成一个字符串
+         |--pop()，末尾开始删除元素
+         |--shift()，删除首个元素，剩下的往前移
+         |--unshift()，首位添加，后移
+         |--delete() 留位置的删除
+         |--splice(),插空，并且删除多少个原位置的元素
+
+    |--Date() 时间类
+         |--getTime()，获取当前时间
+         |--getXxx()、setXxx()
+
+    |--Math() 
+         |--PI、min() max()
+         |--round()四舍五入， ceil()上取、 floor()下取
+         |--pow()
+         |--sqrt()
+         |--abs()
+         |--random()，返回介于 0 与 1之间的随机数
+            Math.floor(Math.random() * 100);	// 返回 0 至 99 之间的数
+            Math.floor(Math.random() * (max - min) ) + min;
+
+    |-- 正则表达式：用于文本搜索和文本替换操作的字符序列
+         |--- /i 大小写不敏感
+         |--- /g 全局
+         |--- /m 多行查找
+         |--- \d	查找数字
+            str.search(/w3school/i)，搜索字符串中 "w3school" 的大小写不敏感
+            str.replace(/microsoft/i, "W3School");
+
+        方法：
+         |--test() 搜索包含
+
+    回调函数
+   回调函数是一个作为参数传给另一个 JavaScript 函数的函数。这个回调函数会在传给的函数内部执行
+   
+   function myClick(idStr , fun){
+				var btn = document.getElementById(idStr);
+				btn.onclick = fun;
+         }
+
+	myClick("btn08",function(){
+					var and = document.getElementById("android");
+					var ps = and.previousSibling;
+					alert(ps);
+            });
+
+
+
+
+二、DOM：DataStructure Object model,文件结构模型，直接改变HTML
+
+   就是提供给JavaScript接口，将整个HTML文档映射成一棵对象数，获取HTML的内容和其属性。
+
+   每个载入浏览器的 HTML 文档都会成为 Document 对象。Document 对象使我们可以从脚本中对
+   HTML 页面中的所有元素进行访问。
+
+   Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。
+
+   1.事件：发生在 HTML 上的事情，如用户点击。则通过特定的JavaScript代码加入执行的操作
+        常见事件：元素改变(onchange)、用户点击(onclick)、鼠标移入(onmouseover)、
+                 鼠标移出(onmouseout)、按键(onkeydown)、页面加载完成(onload)
+        |---button 里面添加 onclick
+            <button onclick = "this.innerHTML = Date()">时间</button>
+
+   2.将事件绑定函数形式来响应事件。
+    |---要把这部分代码写到网页的最后部，使得网页全部加载了，才可以设置。
+    |---或者利用window.onload 来触发
+
+   3.DOM直接操作HTML结构：获取网页节点（所有网页对象都属于节点）DOM提供的 Node 函数
+
+    |---通过document 来调用 
+         |---document.getElementById("pic"),通过id号来获取该对象
+         |---docunment.getElementsByTagName("div")，通过标签来获取对象数组
+         |---docunment.getElementsByName("name")，通过名字来获取对象数组
+
+    |---通过此节点来调用，获取此节点的子节点中的相应对象
+         |---btn.getElementsByTagName("li"),通过标签来获取该子节点中的对象
+         |---btn.childNodes / firstChild / lastChild，注意里面的子节点还包括空格（text）
+         |---btn.children 获取子元素（不包括空格）
+   
+    |---获取父节点和兄弟节点
+         |--parentNode，获取当前元素的父元素
+		   |--previousSibling，获取当前元素的前一个兄弟节点
+         |--nextSibling，获取当前元素的后一个兄弟节点
+
+    |---var body = document.body; 获取body的引用
+        var html = document.documentElement; 获取html根标签
+        var all = document.all; 获取页面中所有的元素
+        var class = getElementsByClassName()根据class属性值获取，有兼容问题
+        var div = document.querySelector(".box1 div");选择器获取（！！！用处最多）
+
+    |---增删改查,父节点调用
+       Node.appendChild(childNode)
+       Node.removeChild()
+       Node.replaceChild(新，旧)
+       Node.insertBefore(加，原)
+
+   4.DOM直接操作表现 改变CSS样式
+   
+    4.1 获取基本样式
+     |---style属性设置内联样式（html中的样式），如果样式中写了!important则如何设置都不生效，可改
+         |---box1.style.width
+     |---currentStyle获取元素的当前显示的样式,只有IE浏览器支持，其他的浏览器都不支持,只读
+         |---box1.currentStyle.height
+     |---getComputedStyle()这个方法来获取元素当前的样式,IE8以下不支持，只读
+         |---getComputedStyle(box1,null).height
+
+      为了满足所有浏览器的兼容情况。
+      function getStyle(obj , name){
+				if(window.getComputedStyle){//如果不用window的话会以为是全局变量undefined。而不是方法
+					return getComputedStyle(obj , null)[name];
+				}else{
+               //访问对象属性有两种方式：点号表示法和方括号表示法。
+               //因为传入是字符串的命名可能不符合命名规则，所以使用方括号比较保险。
+					return obj.currentStyle[name];
+				}
+         }
+         
+    4.2 获取其他样式；
+     |---clientWidth、clientHeight，获取可见高度，不可改，包括边界等等
+         |---注意这里获取的是纯数字，所以要拿去设置style.width 的话必须 clientWidth + "px";
+     |---offsetWidth、offsetHeight，获取开启定位元素的宽高信息，即便设置overflowhidden也是一样
+     |---offsetParent，获取当前元素的定位父元素，
+     |---scrollWidth、scrollHeight，获取元素整个滚动区域的宽度和高度
+        |---scrollLeft、scrollTop，获取水平、垂直滚动条滚动的距离
+        |---scrollHeight - scrollTop == clientHeight，说明垂直滚动条滚动到底了
+
+     |---clientLeft,clientTop: 元素周围边框的厚度
+     |---offsetTop、offsetLeft：获取相对定位的父类偏移量
+     |---style.left、style.top: 开启定位元素的偏移量
+
+
+   5.事件对象:当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数,
+           在事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标  键盘哪个按键被按下
+
+       |---获取当前的触发事件，兼容浏览器：(不同浏览器存储的地方不同)
+         function(event){
+            event = event ||windows.event;
+         }    
+
+       |---获取滚动条位置
+				chrome认为浏览器的滚动条是body的，可以通过body.scrollTop来获取
+				火狐等浏览器认为浏览器的滚动条是html的，
+         var st = document.body.scrollTop || document.documentElement.scrollTop;
+         
+       |---事件的冒泡（Bubble）
+				 事件的向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发
+             取消冒泡：event.cancelBubble = true;
+             
+             应用：为新增加的结构自动添上响应函数。如超链接的点击效果（事件的委派）
+       |---事件的捕获（相当于从外找到触发事件的过程，刚好与事件的冒泡相反）
+
+       |---事件的绑定函数，绑定多个响应函数 用 addEventListener(触发事件字符串，回调函数，是否捕获触发)
+         |---此时需要这样取消默认行为，event.preventDefault && event.preventDefault();
+            
+         btn01.addEventListener("click",function(){
+					alert(1);
+            },false);
+         |---IE8不支持，使用的是attachEvent(触发事件字符串，回调函数)
+            btn01.attachEvent("onclick",function(){
+					alert(1);
+            });
+            
+         |---自定义兼容绑定多函数
+         function bind(obj , eventStr , callback){
+				if(obj.addEventListener){
+					obj.addEventListener(eventStr , callback , false);
+				}else{
+					obj.attachEvent("on"+eventStr , function(){
+						callback.call(obj);
+					});
+				}
+         }
+         
+
+       |---鼠标拖拽：onmousedown onmouseup onmousemove
+           |---取消绑定事件：document.onmousemove = null;
+           |---setCapture(), 捕获所有鼠标按下的事件。只有IE支持，chrome报错。
+               解决兼容：box1.setCapture && box1.setCapture();
+                        box1.releaseCapture && box1.releaseCapture();
+           |--- 浏览器提供的默认行为：拖拽网页中的内容时，浏览器会默认去搜索引擎中搜索内容，
+                |---return false来取消默认行为
+                
+       |---鼠标滚轮：onmousewheel，火狐不支持该属性
+             |---火狐中使用 DOMMouseScroll 来绑定滚动事件，使用addEventListener()方法绑定
+                此时：取消默认行为需要使用 event.preventDefault();IE8不支持
+                |---兼容办法 event.preventDefault && event.preventDefault();
+                            return false;
+             |---event.wheelDelta 可以获取鼠标滚轮滚动的方向
+             |---火狐中使用event.detail来获取滚动的方向
+
+       |---键盘事件：onkeydown、onkeyup
+             键盘事件一般都会绑定给一些可以获取到焦点的对象或者是document
+             |---keyCode，获取按键的编码
+             |---altKey、ctrlKey、shiftKey，判断alt ctrl 和 shift是否被按下
+             |---如果在onkeydown中取消了默认行为，则输入的内容，不会出现在文本框中
+                  如不允许文本框输入中出现数字的用法
+                  if(event.keyCode >= 48 && event.keyCode <= 57){
+						   return false;
+                  }
+
+   6.直接操作类
+      利用style每次只能修改一个样式，并且效率低。设想直接修改class的属性，一行代码实现功能
+      自定义函数，实现对类的增删查改
+
+                  
+三、BOM：Broswer Object model,浏览器对象模型。提供一组对象，直接操作浏览器。
+
+ BOM的核心是Window，Window对象既是通过js访问浏览器窗口的一个接口，又是一个全局对象。
+ 在网页中定义的任何对象，变量和函数，都以window作为其全局对象。比如Window里面的方法，
+ 不用window.alert()调用，直接使用alert().
+ Navigator、Location、 History、Screen 这些都是Window里面的对象
+
+   |---BOM对象，作为window对象的属性保存的，通过window对象来使用，也可以直接使用
+		 Window：当前整个浏览器的窗口
+		 Navigator：当前浏览器的信息，识别不同的浏览器
+		 Location：当前浏览器的地址栏信息获取地址栏信息，或者操作浏览器跳转页面
+		 History：代表浏览器的历史记录，只能操作浏览器向前或回退翻页
+       Screen：代表用户的屏幕的信息，获取到用户的显示器的相关的信息（少用）
+   
+   |---Window：Window 是接口， window 是实例，全局变量是 window 的属性。
+       setInterval(function(){},100)，定时调用，每隔一段时间执行一次函数，返回一个数字，作为定时器的唯一标识
+       clearInterval()，关闭一个定时器，传入定时器标识，clearInterval(timer);
+       setTimeout(function(){},100)，延时调用，隔一段时间以后在执行，执行一次
+       clearTimeout()，关闭一个延时调用
+
+   |---Navigator：userAgent识别不同浏览器，因为浏览器兼容问题需要捕获浏览器
+         
+         if(/firefox/i.test(ua)){
+				alert("火狐");
+			}else if(/chrome/i.test(ua)){
+				alert("Chrome");
+			}else if(/msie/i.test(ua)){
+				alert("IE浏览器");
+			}else if("ActiveXObject" in window){
+				alert("IE11");
+         }
+         
+   |---History：以下为常用的对象方法
+       back()，回退到上一个页面，作用和浏览器的回退按钮一样
+       forward()，跳转下一个页面，作用和浏览器的前进按钮一样
+       go()，用来跳转到指定的页面，go(2),向前跳转两个页面
+          |---history.go(-2);
+
+   |---Location：获取当前页面的完整地址，所以可以直接location修改，支持具体路径、相对路径
+          location = "http://www.baidu.com";
+			 location = "01.BOM.html";
+       assign()，跳转到其他的页面，作用和直接修改location一样
+         |--- location.assign("http://www.baidu.com");
+       reload()，重新加载当前页面，作用和刷新按钮一样，传递true，强制清空缓存刷新页面
+       replace()，跳转新页面，不能使用回退按钮回退
+
+
+四、JSON： JavaScript Object Notation JS对象表示方法
+         其实就是需要将JS中的数据传给其他编程语言，转换为其他语言中的对象
+          JSON在开发中主要用来数据的交互
+         |-- 支持：对象（JSON字符串中的属性名必须加双引号）、数组
+             var json = '[1,2,3,"hello",true]';
+             var json = '{"name":"孙悟空","age":18,"gender":"男"}';
+            |-- JSON.parse(json);
+         |-- JS中直接提供JSON工具类，实现：json ->js对象，JSON.parse(字符串)
+         |-- JS对象 -> JSON ：JSON.stringify(js对象)
+         |-- IE7以下不兼容JSON
+             |-- eval()函数可以直接执行一个字符串中的js代码，
+                  但是在开发中尽量不要使用，执行性能比较差，安全隐患
+             |-- 兼容，直接导入文件，别人写了相关的函数，json2.js
+          
+
+         
+
+			
+         
+
+   
+
+五、实际编程用到的小tip
+    |---三大主流浏览器的兼容问题，在代码中尤其要考虑。
+    |---要改变结构，避免用函数一条一条搭积木，可以结合innerHTML
+    |---设置后续的默认操作无效的，如超链接的跳转，
+         |---直接超链接绑定javascript:;
+         |---return false;
+         |---addEventListener()方法绑定，取消默认行为使用 event.preventDefault()
+
+    |---获取内容、文本：对于input的类型，不是用innerHTML，而是直接用value 
+
+    |---理想的操作状态下能正常实现功能，但是会有各种奇葩的用户操作，所以写代码的时候不仅需要
+        考虑实现功能还需要对可能出现的问题进行一个处理。尽量健壮代码。
+
+    |---定时器功能的标配：
+            after.onclick = function () {
+                clearInterval(obj.timer);
+                //前面添加一个取消定时器，放置多次按钮导致定时器叠加
+                //创建自身的定时器属性，避免创建多个对象调用定时器无法区别而很混乱
+                obj.timer = setInterval(function () {
+                    实现某种功能。
+                }, 100);
+            };
+
+    |---自定义函数，获取指定元素的当前的样式
+			 * 参数：
+			 * 		obj  对象，要得到谁身上的元素
+			 * 		name 要获取的样式名
+			 */
+			function getStyle(obj , name){
+				if(window.getComputedStyle){
+					//正常浏览器的方式，具有getComputedStyle()方法
+					return getComputedStyle(obj , null)[name];
+				}else{
+					//IE8的方式，没有getComputedStyle()方法
+					return obj.currentStyle[name];
+				}
+				
+         }
+    |---有时候获取的是带单位的字符串，要提取里面的纯数字，可以使用 parseInt()
+        比如 getComputedStyle() 获取的就是 100px,利用 parseInt() 就可以直接转化成 100。
+    |---传入的是字符串，但是想要使用传入的字符串设置属性，比如"width"
+        box.style["width"] 直接相当于 box.style.width
+         
+    |---将一个功能的实现抽象成函数
+        最先其实要保证绑定函数的正确性，此时可以测试一下
+        其次实现的功能由基本实现，一个一个功能实现，不必要一下子写的集成度很高，其实很难。
+        不断优化
+
+    |---JS通过sytle直接设置颜色样式是内联样式，会覆盖CSS中写的样式，比如没有hover状态，要注意
+       样式层叠优先级是:浏览器缺省 < 外部样式表(引入的css文件) < 内部样式表(<style>标签内的样式) < 内联样式(style=”)
+            |--allA[j].style.backgroundColor = "red";会直接覆盖
+            |--allA[j].style.backgroundColor = "" 设置空字符串，则使用原来设置的样式
+
+    |---实际在自己写代码的时候问题出现了很多。根本还是在于分析问题。该出什么效果，哪里没有出效果。
+        将问题可能出现的范围进行一步一步的缩小，不断的排查变量名上的、逻辑上的、实现方法上的问题。
+        排除从易到难，一步一步分析，最后都是能找到问题的。反观自己最初的破罐子破摔心里，算了找不到
+        就找不到，不管了，获取拼命对参考代码哪里不一样哪里不一样，二者都是无益的。
+
+    |---实现轮播图的技巧：
+        |---偏移量实现图片之间的切换。
+        |---最后一张图之后再加第一张图，设置偏移量为0，回调函数中去改变索引点的显示状态。
+            
+ 
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src = "javaScript.js"></script> -->
+
+    <style>
+       #box1{
+          width: 100px;
+          height: 200px;
+          background-color: red;
+       }
+
+    </style>
+   
+
+   <script>
+      window.onload = function(){
+         var btn = document.getElementById("btn1");
+         var box1 = document.getElementById("box1");
+         btn.onclick = function(){
+            box1.style.width = "300px";
+            //alert(box1.style.width);
+            //alert(box1.currentStyle.height);
+            alert(getComputedStyle(box1,null).height);
+         };
+         
+      };
+   </script>
+    
+</head>
+<body>
+    
+    <button id = "btn1">点击获取样式信息</button>
+    <div id="box1" ></div>
+
+</body>
+</html>

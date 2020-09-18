@@ -1,0 +1,39 @@
+
+//1. 结构上的直观性
+.box1{
+    width: 300px;
+    height: 500px;
+    background-color: beige;
+
+    .box2{
+        width: 200px;
+        height: 100px;
+        background-color: green;
+    }
+
+}
+
+//2.测试变量之间的复用与易于维护
+
+@w:300px;
+@name:box4;
+@color_use:red;
+
+.@{name}{
+    width: @w;
+    height: @w;
+    background-color: @color_use;
+
+}
+
+/*这个函数型是不会在CSS文件中显示出来的，但是相当于函数一样可以直接调用，设置默认值*/
+.box5(@wid:300px,@hei:200px,@color:red){
+    width: @wid;
+    height: @hei;
+    background-color: @color;
+}
+
+.box6{
+    .box5();
+    border:2px solid @color_use;
+}

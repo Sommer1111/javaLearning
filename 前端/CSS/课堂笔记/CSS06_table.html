@@ -1,0 +1,138 @@
+<!--
+    表格；
+    1. html 里面可以设置格式
+      1.1 行列分
+        |--table:整个表格整体部分
+           可以设置基本的格式：<table border="1" width=20% align="center">
+        |--tr:表示表格的一行内容
+        |--td：表示表格一行中的一列
+           |---rowspan="n"：往下纵向合并n单元格,如果里面原来有元素就会被挤过去
+           |---colspan="n"：往右横向合并n单元格
+
+      1.2 按内容分
+        |--thead：表示表头部分
+           th表示表头标题
+        |--tbody：表示身体部分
+        |--tfoot：表示表底部分
+
+    2. CSS中设置表格样式
+        |--table{} 设置整个表格的样式
+           |-- border-collapse: collapse，设置边框合并
+           |--background-color: lawngreen，设置分行的高亮显示
+           |--vertical-align：通过基线设置垂直方向的居中格式
+        |--td{} 设置具体内容的样式
+
+    3. 表单，提交数据给服务器的方式
+       |--form 设置提交的服务器地址
+          |--input设置各种表单的格式：
+            submit、passwrad、radio、checkbox、select+option、reset、button
+            |--几个属性：name、value
+          |--button。设置无基本样式的按钮。
+
+
+
+-->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        table{
+            width: 50%;
+            border:1px solid red;
+            /*设置边框合并*/
+            border-collapse: collapse;
+
+        }
+
+        /*设置分行的高亮显示*/
+        tbody > tr:nth-child(odd){
+            background-color: lawngreen;
+        }
+
+        td{
+            text-align: center;
+            vertical-align: bottom;
+            height: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1" width=20% align="center">
+
+        <thead>
+            <tr>
+                <th>时间</th>
+                <th>精力</th>
+                <th>生命</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td></td>
+                <td>总计</td>
+                <td>100000</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form action="text.html">
+        文本框：<input type="text" name = "User"><br>
+        密码：<input type="password" name = "pass"><br>
+        单选：<input type="radio" value="A" name = "choose">
+        <input type="radio" value="B" name = "choose"><!--名字相同关联起来表示同一个题目的选项-->
+        <input type="radio" value="C" name = "choose"><br>
+        多选：<input type="checkbox" value = "A" name = "choose">
+        <input type="checkbox" value = "B" name = "choose">
+        <input type="checkbox" value = "C" name = "choose">
+        <input type="checkbox" value = "D" name = "choose"><br>
+        
+
+        下拉选项：
+        <select name = "mychoose">
+            <option value="A">江西</option>
+            <option value="B">湖北</option>
+            <option value="C">福建</option>
+
+        </select>
+
+        <input type="submit" name="注册" id="">
+        <button type="submit">完成</button>
+
+
+        
+    </form>
+
+  
+
+
+</body>
+
+</html>

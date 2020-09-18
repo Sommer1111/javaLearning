@@ -1,0 +1,167 @@
+<!--
+
+    二、CSS————无处不盒子，将所有的页面布局都以盒子的样式来设定。
+    
+    1.盒子的组成成分：
+      内容：content，设置内容区的参数，
+          width:
+          heigth:
+          background-color：
+         
+      边框：border，边框如果区分开来的话就是上、右、下、左这四个顺序，或者上下、右左
+        boder-width:
+        border-color：
+        border-top-width:之类可以单独设置每一边宽度
+        border-style:设置边框线的样式，实线solid，dotted点状虚线，dashed虚线
+        border-top:类单独设置每一边
+       
+
+      边距：
+        框外边距：margin（影响盒子相对页面位置，设置左上则移自己，这是右下则以别人）
+          margin-top:
+          margin-bottom:
+          margin-left:
+          margin-right:
+           
+        内容边距：padding(影响盒子大小)
+           padding-top:
+           padding-bottom:
+           padding-left:
+           padding-rigth:
+
+        盒子大小的设置：box-sizing:
+           content-box（默认）：就是正常计算，width设置的是内容区的大小
+           border-box: width设置成盒子的总大小
+           
+
+    2.页面布局，如何将内容恰好放在你需要的位置，并且其它位置的内容也不会发生你不需要的变化？
+       水平布局：
+           2.1 块元素布局：
+             所有水平方向的边距和宽度之和要等于父类设置的宽度，如父类终极父类设置宽度为1000px，
+             则和必为1000px，如果不为1000，那么浏览器就会按照默认的方式去调整。
+             可以设置属性为auto，那么默认就是优先调节它
+           2.2 行内元素布局：
+             默认是不能设置宽高的，是靠自己的宽高撑起来。但是可以通过转化成块元素设置
+             display:转化
+               inline：转化成行内元素
+               block：转化成块元素
+               inline-block:在行内显示但是有块元素的属性，可以设置宽高
+               none:不显示，如折叠菜单栏，把鼠标点过去就显示的操作
+               table:转化成表
+
+            visibility：显示状态
+               visible：直接消失
+               hidden：隐身，不显示但是占位
+
+       垂直布局：
+           子元素的高度如果大于了父类，则存在一个溢出问题；overfolw
+           单独设置x、y方向的溢出，overflow-x,overflow-y
+           属性设置：
+              ① hidden：把溢出部分隐藏不显示
+              ② scroll：设置滚动条显示
+              ③ auto：根据需要生成滚动条
+              ④ visible：原来咋样就咋样显示
+
+    3.浏览器显示：样式大部分会有一些默认值，所以显示起来也不一定满足要求
+        所以需要重置，直接引入相关的重置文件
+
+    4.阴影显示效果
+      outline:相当于给块加上一个外边框，基本跟border是一样的效果，但是它不会改变边框的大小。
+      box-shadow:生成的块与原块大小一样，用法类似于width，设置偏移量，第三个值可以设置阴影效果的半径   
+      border-radius:将边框设置成圆角，也可单独设置某一个角。
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color:yellow;
+
+            border-style: solid;
+            border-width:10px;
+            border-color:indianred;
+
+            margin: 20px;
+            margin-top: 50px;
+            margin-left:60px;
+            margin-bottom: 50px;
+        }
+
+        .box2{
+          width: 300px;
+          height: 300px;
+          background-color: greenyellow;
+          border: 30px;
+          border-color:khaki;
+          border-style: dotted;
+
+          margin-top: 30px;
+          margin-left: 20px;
+
+          padding: 20px;
+        
+        }
+        
+        .inner{
+          height: 100px;
+          background-color:white;
+          overflow: scroll;
+          
+
+        }
+
+        .box-shadow{
+          width: 200px;
+          height: 200px;
+          background-color: chartreuse;
+          box-shadow: 10px 10px 20px red;
+          border-radius: 10px;
+
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">我是盒子一号</div>
+
+    <div class="box2">我是盒子二号</div>
+    <div class="box">
+     
+       <div class="inner">
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类我是子类
+        我是子类
+        我是子类
+       </div>
+    </div>
+
+    <div class="box-shadow">
+
+    </div>
+</body>
+</html>

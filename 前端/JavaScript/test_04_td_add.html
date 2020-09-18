@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>添加删除记录练习</title>
+
+<link rel="stylesheet" href="../JavaScript/style/test_04_css.css">
+
+<script type="text/javascript">
+    //实现delete删除
+    //实现增加表单
+
+    //放在外面可以实现复用
+
+    //疑惑，funa = function(){}与下面这个的区别是什么？
+    function funcA(){
+               //for是先于函数加载实现的，而响应函数是点击是才实现，所以此时i=3，不能实现一一绑定，
+               //这里需要用到this
+               var name = this.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML;
+               var choose = confirm("确定删除"+name+"吗？");
+               var tr = this.parentNode.parentNode;
+               if(choose){
+                   tr.parentNode.removeChild(tr);
+               }
+               
+               //设置后续的默认操作无效的方法，或者直接超链接绑定javascript:;也可以
+               return false;
+
+            }
+
+    window.onload = function(){
+
+        //1.实现删除的功能
+        //获取所有a标签
+        var aset = document.getElementsByTagName("a");
+        //给每一个a绑定响应函数
+        for(var i = 0;i<aset.length;i++){
+           aset[i].onclick = funcA;
+        }
+
+        //1.实现增加的功能
+        
+        var button = document.getElementById("addEmpButton");
+        button.onclick = function () {
+            //获取新增加的表单内容，对于input的类型，不是用innerHTML，而是直接用value
+            var empName = document.getElementById("empName").value;
+            var email = document.getElementById("email").value;
+            var salary = document.getElementById("salary").value;
+
+            //构造新的标签内容
+            var newtr = document.createElement("tr")
+            newtr.innerHTML = "<td>" + empName + "</td>" +
+                              "<td>" + email + "</td>" +
+                              "<td>" + salary + "</td>" +
+                              "<td><a herf = 'javascript:;'>Delete</a></td>";
+            
+            //为新的标签里面的a绑定响应函数
+            var newa = newtr.getElementsByTagName("a")[0];
+            newa.onclick = funcA;
+
+            var table = document.getElementsByTagName("tbody")[0];
+            table.appendChild(newtr);
+
+        };
+       
+
+    }
+
+	
+</script>
+</head>
+<body>
+
+	<table id="employeeTable">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Salary</th>
+			<th>&nbsp;</th>
+		</tr>
+		<tr>
+			<td>Tom</td>
+			<td>tom@tom.com</td>
+			<td>5000</td>
+			<td><a href="deleteEmp?id=001">Delete</a></td>
+		</tr>
+		<tr>
+			<td>Jerry</td>
+			<td>jerry@sohu.com</td>
+			<td>8000</td>
+			<td><a href="deleteEmp?id=002">Delete</a></td>
+		</tr>
+		<tr>
+			<td>Bob</td>
+			<td>bob@tom.com</td>
+			<td>10000</td>
+			<td><a href="deleteEmp?id=003">Delete</a></td>
+		</tr>
+	</table>
+
+	<div id="formDiv">
+	
+		<h4>添加新员工</h4>
+
+		<table>
+			<tr>
+				<td class="word">name: </td>
+				<td class="inp">
+					<input type="text" name="empName" id="empName" />
+				</td>
+			</tr>
+			<tr>
+				<td class="word">email: </td>
+				<td class="inp">
+					<input type="text" name="email" id="email" />
+				</td>
+			</tr>
+			<tr>
+				<td class="word">salary: </td>
+				<td class="inp">
+					<input type="text" name="salary" id="salary" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button id="addEmpButton" value="abc">
+						Submit
+					</button>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>

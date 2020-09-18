@@ -1,0 +1,682 @@
+/*顶部导航条的外部容器设置*/
+.top_bar_wrapper{
+    background-color:#333;
+    height:40px;
+    line-height: 40px;
+}
+
+/* 将所有超链接设置为block，这样一方法可以整块点击，另一方面更好设置属性 */
+.top_bar a{
+    display:block; /*整一块表格的部分都是可以点击的，故而设置*/
+    font-size: 12px;
+    color: #b0b0b0;
+
+}
+
+/*导航条的浮动设置*/
+.service,
+.top_bar li{
+    float: left;
+
+}
+
+.user-info,
+.shop-car{
+    float:right;
+}
+
+
+
+/*左边导航的样式设置*/
+
+/*分割线*/
+.split{
+    font-size:12px;
+    color:#424242;
+    margin:0 8px;
+}
+
+/*鼠标hover状态*/
+.top_bar a:hover{
+  
+    color:white;
+}
+
+/*购物车样式设置*/
+.shop-car a {
+    width: 120px;
+    background-color:#424242;
+    text-align:center;
+   
+}
+.shop-car{
+    margin-left:26px;
+}
+
+
+/*购物车 hover样式*/
+.shop-car a:hover{
+    background-color:white;
+    color:#FF6700;
+}
+
+
+/*设置下载app的下拉框图样式*/
+
+.app{
+    position: relative;/*子类开启了定位，那么父类必须开启定位*/
+}
+
+/*容器样式*/
+.qrcode{
+    width: 124px;
+    height: 0;/*通过高度变化来表现下拉效果*/
+    background-color: #fff;
+    box-shadow:0 0 10px rgba(0, 0, 0, .3);
+    line-height: 1;/*重置父类行高设置的影响*/
+    text-align: center;/*使内部的行元素居中对齐*/
+
+    position: absolute;/*使其脱离文档流，app的行宽不会被撑开，并且易于调整位置*/
+    left:-40px;/*微调位置*/
+
+    /*设置高度为0，超过部分是隐藏的，这样才能看到拉伸下来的效果*/
+    overflow: hidden;
+    transition: height 0.3s;
+    z-index: 9999;
+
+
+}
+
+/*图片样式*/
+.qrcode img{
+    width: 90px;/*直接设置图片的大小*/
+    margin:17px;
+    margin-bottom: 10px;
+    
+}
+
+/*文字样式*/
+.qrcode span{
+    font-size: 14px;
+    color: #000;
+   
+}
+
+/*下三角样式*/
+.app::after{
+    content: '';/*伪元素必须设置插入的内容才有空间*/
+
+    /*利用边界设置出下三角的样式*/
+    width: 0;
+    height: 0;
+    border:8px solid transparent;
+    border-top:none;
+    border-bottom-color: white;
+
+    /*微调位置*/
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
+    margin:auto;
+
+    /*只有hover时才显示，一般情况之下是默认隐藏的*/
+    display: none;
+}
+
+/* 设置鼠标hover 下载app时显示下拉框 */
+.app:hover .qrcode,
+.app:hover::after{
+    display: block;
+    height: 148px;
+
+}
+
+/* 设置购物车的下拉样式 */
+.shop-car{
+    position: relative;
+}
+
+/* 下拉框样式 */
+.shop-car-info{
+    width: 320px;
+    height: 0;
+
+    /* 设置使文字居中 */
+    color:black;
+    text-align: center;
+    line-height: 100px;
+
+    background-color: white;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, .1),-2px 2px 5px rgba(0, 0, 0, .1);
+    
+    /* 微调位置 */
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+    transition: height 0.3s;
+    z-index: 9999;
+}
+
+.shop-car:hover .shop-car-info{
+   height: 100px;
+}
+
+/* 设置头部导览框的样式 */
+
+/* 外部容器 */
+.header-wrapper{
+    height: 100px;
+    position: relative;
+}
+
+
+/* 设置logo容器的样式 */
+.logo{
+    /* 浮动 */
+    float:left;
+    width: 55px;
+    height: 55px;
+    margin-top:22px;
+    
+    position: relative;
+
+    /* 使只显示一张图片 */
+    overflow:hidden;
+}
+
+/* 统一设置超链接的样式，先固定显示logo图片为背景。再hover时偏移改变 */
+.logo a{
+    width: 55px;
+    height: 55px;
+    background-image: url(../img/mi-logo.png);
+    background-position: center;/*  背景图片居中的设置方式*/
+    background-color: #ff6700;
+
+    position: absolute;/* 使他脱离文档流而利于布局，横着排列 */
+
+    /* transition时必须要有一个确定的初始状态，如果是auto的不知道咋变，就没有效果 */
+    left:0;
+    transition:left 0.1s; 
+}
+
+/* 此时单独设置另一张图片的背景图片，实现背景变换的效果 */
+.logo .home{
+    position: absolute;/* 使他脱离文档流而利于布局，横着排列 */
+    left:-55px;/* 初始定位，溢出不显示 */
+    background-image:url("../img/mi-home.png");
+    background-position: center;
+}
+
+.logo:hover .mi{
+    left:55px;/* 位移出去 */
+}
+.logo:hover .home{
+    left:0px;/* 位移进来 */
+}
+
+/* 设置头部中间的导览框 */
+.nav{
+    /* 定位 */
+    float:left;
+    margin-left:7px;
+    padding-left: 58px;
+}
+
+.nav >ul> li {
+    /* 这里影响后面的嵌套的子类的子类li，所以需要一.nav>li来区分 */
+    float:left;
+}
+
+.nav li a{
+    display:block;
+    line-height: 100px;
+    font-size:16px;
+    color:black;
+    margin:0 10px;
+}
+
+.nav a:hover{
+    color:#ff6700;
+}
+
+/* 设置下拉商品栏 */
+.nav .show{
+
+    /* 基本样式 */
+    width: 100%;
+    /* 一般情况先隐藏，hover之后显现 */
+    height:0px;
+    overflow: hidden;
+    background-color:white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .1);
+
+    /* 微调定位 */
+    position: absolute;
+    top:100px;
+    left:0;/* 正奇怪为什么明明开启了父类的相对定位，宽度还不一致，原来是left没有设置 */ 
+
+    /* 过渡效果 */
+    transition:height 0.3s;
+
+    z-index: 9999;
+}
+
+.nav .hover-show:hover ~ .show,
+.nav .show:hover{
+    /* 开始设置a:hover 出不了效果，因为这里 a不是与show是兄弟关系，所以这样找不到show。 */
+    /* 复习：~ 是·后面的所有兄弟，+ 是后面的第一个兄弟 */
+    height:228px;
+    border-top:1px solid rgb(224,224,224);
+}
+
+
+/* 设置右边的搜索框 */
+
+/* 设置外部容器样式 */
+.search-wrapper{
+    width: 296px;
+    height: 50px;
+    float: right;
+    margin-top: 25px;
+}
+/* 设置搜索框的样式，输入框有自带的样式，所以需要删除重置 */
+.search-wrapper .search-info{
+    /* 重置样式 */
+    box-sizing:border-box;
+    border:none;
+    outline:none;
+
+    float:left;
+
+    /* 微调定位 */
+    width: 223px;
+    height: 48px;
+    font-size:16px;
+    border: 1px solid rgb(224, 224, 224);
+    padding:0 10px;   
+}
+
+/* 设置搜索框的样式 */
+.search-wrapper .search-botton{
+    box-sizing:border-box;
+    border:none;
+    outline:none;
+
+
+    float: left;
+
+    height: 48px;
+    width: 50px;
+    padding: 0;
+    background-color: #fff;
+    color: #616161;
+    font-size: 16px;
+    border: 1px solid rgb(224, 224, 224);
+    /* 两个边框重合，所以需要另外设置 */
+    border-left:none;
+}
+
+/* 设置获取焦点时的状态改变 */
+.search-wrapper .search-info:focus,
+.search-wrapper .search-info:focus + .search-botton{
+    border-color: #ff6700;
+}
+
+.search-wrapper .search-botton:hover{
+    background-color:#ff6700;
+    color:white;
+}
+
+
+/* 设置中间左侧导航的样式 ，因为其继承自头部导航li，所以样式可能会受继承影响*/
+.nav-list-menu{
+    position: relative;
+}
+.nav-list{
+    width: 234px;
+    height: 420px;
+    padding:20px 0;
+    background-color:rgba(0, 0, 0, .6);
+
+    position:absolute;
+    left:-120px;
+
+    z-index: 999;
+   
+}
+
+.nav-list li i{
+    float:right;
+    font-size:16px;
+    /* 设置浮动之后行高没用了，所以位置靠上，需要重新设置 */
+    line-height:42px;
+}
+
+.nav-list li a{
+    display:block;
+    height: 42px;
+    line-height: 42px;
+    color:white;
+    font-size:14px;
+    padding:0 30px;
+    /* 避免继承的父类li样式的影响 */
+    margin:0px;
+}
+
+.nav-list li a:hover{
+    background-color:#ff6700;
+    color:white;
+}
+
+
+.show-right{
+    height: 460px;
+    width: 990px;
+    visibility: hidden;
+    background-color:white;
+    position: absolute;
+    left:234px;
+    top: 0px;
+    box-shadow:0 0 10px rgba(0, 0, 0, .1);
+    border:1px solid rgba(0, 0, 0, 0.116);
+    z-index: 999;
+
+
+}
+
+.nav-list li:hover ~ .show-right {
+    visibility: visible;
+    
+
+}
+
+/* 设置banner */
+
+.banner-wrapper{
+    position: relative;
+    top:100px;
+    left:0;
+}
+
+.banner-img-list li{
+    position: absolute;
+}
+
+/* 设置图片样式 */
+.banner-img-list img{
+    width: 100%;
+    vertical-align: top;
+}
+
+/* 设置点的样式 */
+
+/* 先定位 */
+.pointer{
+    /* 不能一起设置单个点的样式，float设置看不到 */  
+    position: absolute;
+    bottom: -425px;
+    right: 35px;
+
+}
+/* 在对自身设置样式 */
+.pointer a{
+    float:right;
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;;
+    border:2px solid rgba(255,255,255,.5);
+    border-radius: 50%;
+    background-color:rgba(0, 0, 0, .6);
+}
+
+.pointer a:hover,
+.pointer a.active{
+    background-color: rgba(255,255,255,.5);
+    border:2px solid rgba(0, 0, 0, .6);
+}
+
+
+/* 先设置基本的样式 */
+.pre-next a{
+    width: 41px;
+    height: 69px;
+    background-image: url(../img/icon-slides.png);
+
+    position: absolute;
+    
+    
+}
+/* 再具体设置样式 */
+.pre {
+    left:234px;
+    top:199px;
+    background-position:-83px 0;
+    
+}
+
+.next {
+    left:1186px;
+    top:199px;
+    background-position:-123px 0;
+}
+
+.pre:hover{
+    background-position:0 0;
+
+}
+.next:hover{
+    background-position:-42px 0;
+}
+
+
+/* 设置右边的响应式块 */
+
+/* 固定定位下来 */
+.fix-part{
+    width: 26px;
+    height: 206px;
+    border:1px solid rgba(102, 99, 99, 0.1);
+
+    position:fixed;
+    top:392px;
+    left:50%;
+    margin-left:613px; /* 利用计算auto的公式来固定在页面的位置，使其位置不随页面大小的变化而变化 */
+}
+
+/* 先固定所有超链接hover之后颜色的变化 */
+.fix-part a:hover{
+    color:#FF6700;
+}
+
+/* 设置响应块的样式 */
+.fix-part li a{
+    display:block;
+    line-height: 40px;
+    font-size:18px;
+    color:#999999;
+    text-align: center;
+    
+    border:1px solid rgba(102, 99, 99, 0.1);
+    border-right:none;
+    border-left:none;
+    border-bottom:none;
+    
+}
+
+
+/* 设置向右的下拉框的样式*/
+.fix-part .pic{
+    width: 124px;
+    height: 170px;
+    background-color: #fff;
+    box-shadow:0 0 10px rgba(0, 0, 0, .3);
+    line-height: 1;
+    text-align: center;
+    font-size:14px;
+    color:#9B9B9B;
+
+    position: absolute;
+    left:-135px;
+    top:0;
+
+    z-index: 9999;
+
+    display: none;
+
+}
+/* 设置下拉框图片的大小 */
+.pic img{
+    width: 90px;
+    margin:17px;
+}
+
+/* 设置指向小三角形，利用border实现  */
+.pic::after{
+    content: '';
+    border:10px solid white;
+    height: 0;
+    width: 0;
+    border-right:none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    right:-10px;
+    top:10px;
+
+}
+
+/* 鼠标hover之后显示下拉框 */
+.pic-hover:hover .pic{
+    display: block;
+}
+
+/* 设置其他标签hover的基本样式 */
+.fix-part .display-info,
+.fix-part .human-service,
+.fix-part .service-after,
+.fix-part .car-info{
+    width: 80px;
+    height: 40px;
+    background-color: #fff;
+    line-height: 40px;
+    text-align: center;
+    font-size:14px;
+    color:#9B9B9B;
+
+    position: absolute;
+    right:35px;
+    display: none;
+
+}
+/* 微调定位 */
+.display-info{
+    top:42px;
+}
+.service-after{
+    top:84px;
+   
+}
+.human-service{
+    top:126px;
+}
+.car-info{
+    top:168px;
+}
+
+/* 小三角的样式设置，同理 */
+.display-info::after,
+.human-service::after,
+.service-after::after,
+.car-info::after
+{
+    content: '';
+    border:10px solid white;
+    height: 0;
+    width: 0;
+    border-right:none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    right:-10px;
+    top:8px;
+
+}
+
+/* hover之后显示 */
+.fix-part a:hover >div{
+    display: block;
+}
+
+/* 设置媒体响应样式，当屏幕宽度小于1278 px时位置固定在右边框，屏幕最小宽度是1226px */
+/* 问题：还是不见了显示不出来 */
+@media all and (max-width:1278px){
+    .fix-part{
+        
+
+        position:fixed;
+        top:392px;
+        left:100%;
+        z-index: 9999;
+   }
+}
+
+/* 设置底部导航快捷方式的样式 */
+/* 定位 */
+.button-wrapper{
+    position: relative;
+    top:475px;
+    width: 100%;
+    
+}
+
+/* 设置浮动 */
+.fast-nav,
+.picture-show,
+.fast-nav li,
+.picture-show li{
+    float:left;
+}
+
+/* 设置快捷方式的外部样式 */
+.button-wrapper .fast-nav {
+    width: 228px;
+    height: 168px;
+    background-color:#5f5750
+}
+
+/* 列表的具体样式 */
+/* 设置li 还是 a 是一样的 */
+.fast-nav a{
+    display:block;
+    color:#cfccca;
+    text-align:center;
+    height: 80px;
+    width: 73px;
+    font-size: 12px;
+    border:1px solid #665E57;
+}
+/* 细调位置 */
+.fast-nav i{
+    display:block; /*这样才能独占一行 */
+    font-size:20px;
+    margin-top:20px;
+    margin-bottom: 10px; 
+}
+
+.fast-nav a:hover{
+    color:white;
+}
+
+/* 设置图片广告的外部样式 */
+.picture-show li{
+    width:316px;
+    margin-left:15px;
+}
+
+/* 设置图片的样式 */
+.picture-show img{
+    width: 100%;
+    vertical-align: top;  
+}
+

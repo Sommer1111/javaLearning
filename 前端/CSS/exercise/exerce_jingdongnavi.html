@@ -1,0 +1,183 @@
+<!--
+    主体导航条的结构是：
+    1. 大的box（宽度占满整个页面，高度为30px）里面有一个小的box1（长度为1190px），box1居中对齐
+    2.  box1 又由两个块组成，左边的location ，显示是向右浮动，右边的是导航条主体box2，显示向右浮动
+    3.  box2中又细致的由一个列表ul组成，ul里面由：
+          |--li：文字超链接
+          |--line：分割线
+          |--li：文字+ li：下三角的图标文字：<i class="fas fa-angle-down"></i>
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="../fa/css/all.css">
+
+    <style>
+        .clearfix::before,
+        .clearfix::after {
+            /*首先去除浮动对高度塌陷的影响*/
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        body {
+            /* 设置字体风格 */
+            font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+        }
+
+        a,
+        .box2 li span {
+            /*设置字体颜色*/
+            color: #999;
+            text-decoration: none;
+        }
+
+        .box2 a:hover,
+        .hightlight {
+            /*设置点击时字体颜色变换*/
+            color: #f10215;
+        }
+
+        .line span {
+            /*设置分割线的样式*/
+            margin: 12px 12px 0;
+            font-size: 10px;
+            color: rgb(204, 202, 202);
+        }
+
+        .location .fas {
+            /*设置字体小图标的颜色*/
+            color: #f10215;
+
+        }
+
+        /*开始设置具体的布局*/
+        .box {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            /*使文字在纵向居中*/
+            background-color: #E3E4E5;
+        }
+
+        .box1 {
+            width: 1190px;
+            height: 100%;
+            margin: 0 auto;
+            /*使内容居中显示*/
+
+        }
+
+        .location,
+        li {
+            float: left;
+        }
+
+        .box2 {
+            float: right;
+
+        }
+
+        /*设置出现下拉菜单栏的效果*/
+        .location-list {
+            width: 320px;
+            height: 436px;
+            background-color: white;
+            border: 1px solid rgb(204, 204, 204);
+            /*平常是隐藏效果*/
+            display: none;
+        }
+        .location-list .list{
+           margin: 20px;
+           padding: 20px;
+           text-align: center;
+        }
+
+
+        /*鼠标点击到定位时显示出来*/
+        .location:hover .location-list {
+            display: block;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="box1 clearfix">
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="javascript:;">福建</a>
+
+                <div class="location-list">
+                    <ul  class="list">
+                        <li>北京 天津 上海 重庆 河北</li>
+                        <li>河南 辽宁 吉林 黑龙江 内蒙古</li>
+                        <li>江苏 山东 安徴 浙江 湖北 </li>
+                        <li>湖南 广东 江西 四川 海南 海外</li>
+                        <li>贵州 甘肃 青海 新疆 港澳 钓鱼岛</li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+            <div class="box2 clearfix">
+                <ul>
+                    <li><a href="javascript:;">你好，请登录</a></li>
+                    <li><a class="hightlight" href="javascript:;">&nbsp;免费注册</a></li>
+
+                    <li class="line"><span>|</span></li>
+                    <li><a href="javascript:;">我的订单</a></li>
+                    <li class="line"><span>|</span></li>
+
+                    <li>
+                        <a href="javascript:;">我的京东</a>
+                        <i class="fas fa-angle-down"></i>
+                    </li>
+
+                    <li class="line"><span>|</span></li>
+                    <li><a href="javascript:;">京东会员</a></li>
+                    <li class="line"><span>|</span></li>
+
+                    <li>
+                        <a class="hightlight" href="javascript:;">企业采购</a>
+                        <i class="fas fa-angle-down"></i>
+                    </li>
+                    <li class="line"><span>|</span></li>
+
+                    <li>
+                        <span>客户服务</span>
+                        <i class="fas fa-angle-down"></i>
+                    </li>
+                    <li class="line"><span>|</span></li>
+
+                    <li>
+                        <span>网站导航</span>
+                        <i class="fas fa-angle-down"></i>
+                    </li>
+                    <li class="line"><span>|</span></li>
+
+                    <li><span>手机京东</span></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

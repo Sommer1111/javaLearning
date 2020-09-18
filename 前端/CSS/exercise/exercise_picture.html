@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="reset.css">
+
+    <style>
+         .box{
+           background-color:grey;
+           width: 190px;
+           height: 450px;
+           overflow: hidden;
+           padding:10px 0px;
+
+    
+
+           border-color:black;
+           border-style: solid;
+           border:10px;
+
+       }
+         .picture{
+           background-color:grey;
+           width: 190px;
+           height: 470px;
+           overflow: hidden;
+
+           border-color:hotpink;
+          
+       }
+    </style>
+</head>
+
+<body>
+    <div class="picture">
+        <!--
+            因为此时图片是父类div中的元素，
+            所以此时显示100%，就可以保证全图显示（比例缩放）
+            给图片添上超链接
+        -->
+        <a href="www.baidu.com"><img src="1.jpg" alt="" width =100%></a>
+        <a href="www.baidu.com"><img src="2.jpg" alt="" width =100%></a>
+        <a href="www.baidu.com"><img src="3.jpg" alt="" width =100%></a>
+
+    </div>
+</body>
+</html>

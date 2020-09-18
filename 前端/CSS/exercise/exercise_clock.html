@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            perspective: 80px;/*视距*/
+        }
+       /*我们希望某东西不是绕着自己的圆心旋转而是绕着自己的端点，可以将其放在外部的容器中*/
+       /*
+       思考：这里的时针分针秒针都是放在一个容器中，为什么不会覆盖掉？
+       回答：
+            因为未设置背景，其实这样设置还是一层一层在重叠，只是遮不住那么多。
+            所以看起来好像完全没有影响一样，其实不然。
+        */
+        .clock{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            margin:0 auto;
+            margin-top:200px;
+            position: relative;
+            background-image: url(../exercise/bg.png);
+            background-size: cover;
+
+        }
+
+        /*将clock中的子类全部设置居中对齐样式*/
+        .clock > div{
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            margin:auto;
+        }
+
+        /*设置时针的容器*/
+        .hour-wrapper{
+            width: 70%;
+            height: 70%;
+            animation: run 3600S steps(60) infinite ;
+   
+        }
+
+        /*设置时针的样式*/
+        .hour{
+            height: 50%;
+            width: 0;
+            border:6px solid red;
+            margin:0 auto;
+        }
+
+        /*设置分针的容器*/
+        .min-wrapper{
+            width: 80%;
+            height: 80%;
+            animation: run 600S steps(60) infinite ;
+   
+        }
+
+        /*设置分针的样式*/
+        .min{
+            height: 50%;
+            width: 0;
+            border:3px solid black;
+            margin:0 auto;
+        }
+
+        /*设置秒针的容器*/
+        .sec-wrapper{
+            width: 90%;
+            height: 90%;
+            animation: run 60S steps(60) infinite ;
+   
+        }
+
+        /*设置秒针的样式*/
+        .sec{
+            height: 50%;
+            width: 0;
+            border:2px solid blue;
+            margin:0 auto;
+        }
+
+
+        @keyframes run{
+            from{
+                transform:rotateZ(0);
+            }
+            to{
+                transform:rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="hour-wrapper">
+            <div class="hour"></div>
+        </div>
+
+        <div class="min-wrapper">
+            <div class="min"></div>
+        </div>
+
+        <div class="sec-wrapper">
+            <div class="sec"></div>
+        </div>
+    </div>
+    
+</body>
+</html>

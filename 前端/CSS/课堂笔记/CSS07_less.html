@@ -1,0 +1,50 @@
+<!--
+    less:预处理脚本语言。
+       觉得CSS的功能不够用不兼容不方便，语法结构也不够清晰
+       于是设计了新的less，作为更强大的CSS，用更少的代码实现更强的样式。更类似于编程语言。
+       浏览器是无法直接渲染less文件，所以less文件编译好之后还需要编译成CSS文件
+
+    1.结构块更清晰，直接祖先里面包含子类
+       .box{
+           .box2{
+
+           }
+       }
+
+       用 & 直接表示外层的父类
+       .box{
+           &:hover{
+
+           }
+       }
+
+    2.抽象变量，易维护。变量有重复定义时，就近原则。
+        @w:300px; 
+        @name:box4; 作为变量名使用时需要，.@{name}
+        @color_use:red;
+
+    3.minix，混合函数，易扩展。
+        .box5(@wid:300px,@hei:200px,@color:red){
+                width: @wid;
+                height: @hei;
+                background-color: @color;
+             }
+
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".//CSS07_less_test.css">
+</head>
+<body>
+
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    
+</body>
+</html>

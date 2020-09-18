@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+    <script>
+        //实现获取文本输入，并且实现不接受数字输入
+        //1.绑定键盘输入函数
+        //2.获取键盘输入的code值进行判断是否允许输入（允许默认行为）
+        //3.
+        window.onload = function(){
+            var id = document.getElementById("passward");
+            id.onkeydown = function(event){
+                event = event || window.event;
+                //console.log(event.keyCode);
+                if(event.keyCode<57 && event.keyCode>48){
+                    return false;
+                   
+                }
+            }
+        }
+
+    </script>
+
+    
+</head>
+<body>
+    密码：<input id = "passward" type="text">
+    
+</body>
+</html>

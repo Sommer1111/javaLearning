@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 测试实现JSON代码，两个常用的方法
+        
+        window.onload = function () {
+                var json = '{"name":"孙悟空","age":18,"gender":"男"}';
+                var json1 = JSON.parse(json)
+                console.log(json1.name);
+
+                var arr = [1,2,3,"hello",true];
+                var newarr = JSON.stringify(arr);
+                console.log(typeof newarr);
+                
+            };
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

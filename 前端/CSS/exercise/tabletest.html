@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .survey{
+        width:800px;
+        height: 800px;
+        margin:0px auto;
+        padding-left: 50px;
+        background-color:rgba(207, 200, 200, 0.3);
+
+    }
+    .title h1{
+        padding-left: 150px;
+        padding-top: 20px;
+        margin-bottom: 50px;
+        
+    }
+
+    .survey-list{
+        line-height: 30px;
+    }
+
+</style>
+</head>
+<body>
+    <div class="survey">
+        <div class="title">
+            <h1>大学生运动情况调查表</h1>
+        </div>
+
+        <div class="survey-list">
+            <form action="../text.html">
+                您的年级是：
+                <select name="mychoose" id="">
+                    <option value="大一">大一</option>
+                    <option value="大二">大二</option>
+                    <option value="大三">大三</option>
+                    <option value="大四">大四</option>
+                    <option value="研一">研一</option>
+                    <option value="研二">研二</option>
+                    <option value="研三">研三</option>
+                    <option value="博士">博士</option>
+                </select>
+
+                您的性别：
+                <select name="mysex" id="">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+
+                <br>
+                <br>
+
+                姓名：<input type="text" name="name">
+                学号：<input type="text" name="id">
+                密码：<input type="password" name="passwrad">
+
+                <br>
+                <br>
+
+                1.您运动的频率是（）<br>
+                <input type="radio" value="每周一次" name = "frequency">每周一次
+                <input type="radio" value="每周2-3次" name = "frequency">每周2-3次
+                <input type="radio" value="每周4次" name = "frequency">每周4次
+                <input type="radio" value="每周5次" name = "frequency">每周5次
+            
+                <br>
+                <br>
+                2.您的常运动时间段是（）<br>
+                <input type="radio" value="早上" name = "time">早上
+                <input type="radio" value="中午" name = "time">中午
+                <input type="radio" value="晚上" name = "time">晚上
+                
+                <br>
+                <br>
+                3.你喜欢哪些运动项目（）<br>
+                <input type="checkbox" value="跑步" name="like">跑步
+                <input type="checkbox" value="骑行" name="like">骑行
+                <input type="checkbox" value="游泳" name="like">游泳
+                <input type="checkbox" value="瑜伽" name="like">瑜伽
+                <input type="checkbox" value="健身房" name="like">健身房
+                <input type="checkbox" value="球类" name="like">球类
+
+                <br>
+                <br>
+
+                4.您与朋友一起运动吗（）<br>
+                <input type="radio" value="独自一人" name = "friend">独自一人
+                <input type="radio" value="与好友一起" name = "friend">好友一起
+                <input type="radio" value="参与团队" name = "friend">参与团队
+                
+                <br>
+                <br>
+
+                5.你每次运动时长为（）<br>
+                <input type="checkbox" value="30分钟" name="last">30分钟
+                <input type="checkbox" value="1小时" name="last">1小时
+                <input type="checkbox" value="10分钟" name="last">10分钟
+                <input type="checkbox" value="2小时" name="last">2小时
+                <input type="checkbox" value="0" name="last">0
+                <input type="checkbox" value="2小时以上" name="last">2小时以上
+                <br>
+                <br>
+
+                
+                <p>非常感谢您的参与！</p>
+
+                <input type="submit" name="提交" >
+
+                <input type="reset" name = "重置">
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

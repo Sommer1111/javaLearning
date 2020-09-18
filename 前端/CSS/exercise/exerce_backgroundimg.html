@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 900px;
+            height: 32px;
+            background-image: url(../exercise/bg.png);
+            /*利用图片的水平方向的重复来设置背景*/
+            background-repeat: repeat-x;
+        }
+
+        /*利用背景图片的切换来形成一种动态点击的效果
+          以为图片是需要加载的，所以为了避免初次加载时出现闪的效果
+          将各种状态图合成一张：叫雪碧图，加上偏移量实现切换的效果，应用非常广泛*/
+        a:link{
+            display:block;
+            width: 93px;
+            height: 29px;
+            background-image: url(../exercise/btn.png);
+        }
+        a:hover{
+            background-image: url(../exercise/btn.png);
+            background-position: -93px 0;
+           
+        } 
+
+        a:active{
+            background-image: url(../exercise/btn.png);
+            background-position: -186px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">
+        <a href="javascript:;"></a>
+    </div>
+    
+</body>
+</html>

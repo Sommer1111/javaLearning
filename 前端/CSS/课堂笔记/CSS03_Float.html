@@ -1,0 +1,412 @@
+<!--
+    CSS 浮动的内容
+       意义：相当于新建的文本框，设置浮动之后就脱离文件流而存在，成为了异于块元素与行内元素的存在。
+       特点：
+           ①.不再独占一行
+           ②.无块元素和行内元素之分，行内元素也可以设置宽高生效。
+           ③.浮动块唯独不会盖住文字。开始便是为图片围绕效果而生，现在则被用于页面的横向布局。
+
+        具体内容：
+        1.页面布局：块里面可以递归划分，就可以实现整个页面的划分布局
+           <header> 布局的头部部位 </header>
+           <main>   布局的中间部位</main>
+           <footer> 布局的下部 </footer> 
+
+           <nav>  左侧导航</nav>
+           <article> 中间的内容</article>
+           <aside> 右边的边栏</aside>
+        
+        2.弊端：浮动之后脱离文件流，使父类的大小无法被子类撑开————高度塌陷
+        
+        3.应对：引入BFC概念：将该元素变成独立的区域，为CSS文件流元素的隐含属性
+           ① 不会被浮动区域覆盖
+           ② 能包含住里面浮动的子元素，
+           ③ 没有内容时与子元素的外边框是分离的，不会因为子元素设置了margin就跟着下移
+
+        4.通过手段开启BFC的方式
+           |--overflow: hidden
+           |--clear:清楚当前元素受到的浮动因素的影响。原理是浏览器会给设置了clear的元素加上 margin
+               clear: left
+               clear: right
+               clear: both
+
+        5.最常用：避免在 html 另外添加一个标签去改变CSS样式（不专业）,利用伪元素在属性后面添加。
+        .box1::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+    
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/exercise/reset.css">
+
+    <style>
+
+        .box{
+            width:1210px;
+            height:800px;
+        }
+
+        header{
+            background-color: yellow;
+            height: 48px;
+            width: auto;
+        }
+
+        main{
+            height:600px;
+            width: auto;
+            border-right:1px black solid ;
+        }
+
+        footer{
+            background-color: blue;
+            height:100px;
+            width: auto;
+        }
+
+
+        aside{
+            height:100%;
+            width: 200px;
+            float: left;
+            
+            
+        }
+
+       
+
+        article{
+            height:100%;
+            width: 800px;
+            float: left;
+            background-color: burlywood;
+        }
+
+       .box main aside .header1{
+       
+            height:200px;
+            width: 100%;
+            padding-top: 20px;
+            padding-left: 2px;
+           
+       }
+
+       .box main aside .main1{
+       
+            height:200px;
+            width: 100%;
+            padding-left: 2px;
+       }
+
+       .box main aside .footer1{
+       
+            height:200px;
+            width: 100%;
+            padding-left: 2px;
+            
+       }
+
+
+        .nav {
+            width: 1210px;
+            height: 48px;
+            background-color: blanchedalmond;
+        }
+
+        .nav li {
+            /*使文字在行的居中*/
+            line-height: 48px;
+            float: left;
+        }
+
+        .nav li a {
+            display: block;
+            padding: 0px 39px;
+            color: #777777;
+            font-size: 18px;
+        }
+
+        .nav li a:hover {
+            background-color: #3F3F3F;
+            color: white;
+            font-weight: bold;
+        }
+
+
+        .box1{
+          background-color:grey;
+           width: 100%;
+           height: 100%;
+           overflow: hidden;
+           border-color:black;
+           border-style: solid;
+           border:10px;
+
+       }
+
+       .box1 .item{
+
+           height: 25px;
+
+           /*
+           使文字在行中居中
+           */
+           line-height: 25px;
+
+           /* 往右缩进留些空隙 */
+           padding-left:28px;
+           padding-bottom: 10px;
+       }
+
+       .item:hover{
+           background-color:red;
+
+       }
+
+       .item a{
+           font-size: 14px;
+           color: #333;
+           text-decoration: none; /*去除下划线*/
+           
+       }
+       .item a:hover{
+           color:white;
+       }
+
+       span{
+           font-size: 12px;
+           margin:2px;
+       }
+
+      
+
+       .new{
+           background-color: hotpink;
+           overflow:scroll;
+           width:400px;
+
+       }
+
+       .news {
+            width: 300px;
+            height: 357px;
+            background-color: #fff(255, 255, 255, 0.685);
+            margin-top: 10px;
+        }
+
+       
+        /*
+        这部分设置标题的样式
+        */
+
+        .news-title {
+            padding-top: 10px;
+            height: 30px;
+            border-top: 1px red solid;
+            display: inline-block;
+            margin-top: -1px;
+            /* 使红线重合*/
+            padding-top: 10px;
+        }
+
+        .news-title a {
+            font-weight: bold;
+            color: black;
+        }
+
+         /*
+        这部分新闻图片、新闻标题的样式
+        */
+
+       .news-picture{
+           height: 150px;  
+       }
+
+       .news-picture .image-title{
+           margin-top: -30px;
+           font-weight: bold;
+           color:white;
+           padding-left: 30px;
+           font-size:18px;
+       }
+
+         /*
+        这部分新闻列表的样式
+        */
+       .new-list{
+           margin-top: 20px;
+       }
+
+       .news-list li{
+         margin-bottom: 17px;
+       }
+
+       .news-list li a{
+           font-size: 14px;
+           color:black;
+           padding-left: -15px;
+          
+       }
+
+       .news-list li a:hover{
+           color:red;
+       }
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <header>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="#">学校主页</a>
+                    </li>
+                    <li>
+                        <a href="#">学院</a>
+                    </li>
+        
+                    <li>
+                        <a href="#">招生信息</a>
+                    </li>
+                    <li>
+                        <a href="#">图书馆</a>
+                    </li>
+        
+                    <li>
+                        <a href="#">师资</a>
+                    </li>
+                    <li>
+                        <a href="#">公告</a>
+                    </li>
+                    <li>
+                        <a href="#">研究生教育</a>
+                    </li>
+                    <li>
+                        <a href="#">环境</a>
+                    </li>
+        
+                    <li>
+                        <a href="#">校园生活</a>
+                    </li>
+        
+                </ul>
+            </div>
+        </header>
+        <main>
+            <aside>
+                <div class="box1">
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">手机</a><span>/</span><a href="#">数码</a><span>/</span><a href="#">电视</a>
+                    </div>
+                    
+                </div>
+            </aside>
+            <article>
+                <div class="news">
+                    <div class="news-title">
+                        <a href="#">体育</a>
+            
+                    </div>
+            
+                    <div class="news-picture">
+                        <img src=".//exercise/1.jpeg" alt="" >
+                        <div class="image-title">
+                            <h3>费德勒首负迪米 扶额头不满发挥</h3>
+                
+                        </div>
+                    
+                    </div>
+            
+                    
+            
+                    <div class="news-list">
+                        <li>
+                            <a href="#">乔治:我爱LA 喜欢和LBJ一起打球</a>
+                        </li>
+                        <li>
+                            <a href="#">格林:3年前降薪就在等KD 特制T恤嘲讽LBJ</a>
+                        </li>
+                        <li>
+                            <a href="#">塔克4000双鞋让保罗羡慕嫉妒 乔丹被震惊</a>
+                        </li>
+                        <li>
+                            <a href="#">CBA下季新赛制:常规赛4组循环 增至46轮</a>
+                        </li>
+                    </div>
+            
+                </div>
+            </article>
+            <aside>
+                <div class="header1"><a href="www.baidu.com"><img src=".//exercise/1.jpg" alt="" width =100%></a></div>
+                <div class="main1"><a href="www.baidu.com"><img src=".//exercise/2.jpg" alt="" width =100%></a></div>
+                <div class="footer1"> <a href="www.baidu.com"><img src=".//exercise/3.jpg" alt="" width =100%></a></div>
+            </aside>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+
+</html>

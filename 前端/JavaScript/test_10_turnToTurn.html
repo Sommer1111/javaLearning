@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 外部容器，使得整个框处于页面的中心位置 */
+        #box1 {
+            width: 480px;
+            height: 300px;
+            margin: 50px auto;
+
+            position: relative;
+            overflow: hidden;
+
+
+        }
+
+        /* 图片容器 */
+        #imgList {
+            /* width: 2600px; */
+            /* 通过JS来设置宽，这样复用性、扩展性好 */
+            position: absolute;
+            /* 开启绝对定位，在JS中设置偏移量，就可以切换到下一张图片 */
+            left: 0;
+        }
+
+        /* 设置图片列表 */
+        #box1 li {
+            float: left;
+        }
+
+        /* 设置图片的大小 */
+        #box1 img {
+            width: 480px;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        /* 设置导航点的位置 */
+        #box2 {
+            position: absolute;
+            bottom: 20px;
+            /* 还需要设置居中样式，利用JS设置 */
+        }
+
+        /* 设置导航点的样式 */
+        #box2 a {
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+
+            opacity: .5;
+            /*兼容IE8透明*/
+            filter: alpha(opacity=50);
+
+            margin-right: 20px;
+        }
+
+        #box2 a:hover {
+            background-color: white;
+        }
+    </style>
+
+    <!-- 设置JS添加样式效果  -->
+    <script>
+        window.onload = function () {
+            //1.需要设置导航点的居中位置
+            var box2 = document.getElementById("box2");
+            var box1 = document.getElementById("box1");
+            
+            box2.style.left = (box1.offsetWidth - box2.offsetWidth) / 2 + "px";
+
+            // 设置图片列表的宽度
+            var imgArr = document.getElementsByTagName("img");
+            var imgList  = document.getElementById("imgList");
+            imgList.style.width = 500*imgArr.length+"px";
+
+            //2.默认第一张图片的索引为选中状态
+            var allA = document.getElementsByTagName("a");
+            var index = 0;
+            allA[index].style.backgroundColor = "white";
+
+            //3.导航点点击实现关联图片的切换
+
+            // 3.1 为每一个超链接绑定一个响应函数
+            for (var i = 0; i < allA.length; i++) {
+                // 因为JS本身的特点，循环会先完成才是响应函数，此时i==5
+                // 但是为了获取点击的索引点是哪个函数，所以设置一个属性存储个数
+                allA[i].num = i;
+
+                allA[i].onclick = function () {
+                    //关闭自动切换的定时器
+                    clearInterval(timer);
+
+                    // 3.2 找到当前索引点，改变索引点的样式为选中状态,可以抽象成一个函数setA()
+                    index = this.num;
+                    // 直接设置，点击发现，点击过的变不回来了，还是在选中状态，也就是说在点击的
+                    // 时候也要讲其他索引点的状态改变
+                    // allA[index].style.backgroundColor = "white";
+
+                    for (var j = 0; j < allA.length; j++) {
+                        //将所有设置回红色，但是直接修改为red的话，就没有hover状态了，
+                        // 因为这种状态直接设置内联样式，优先级高于css设置，会覆盖掉hover设置的颜色
+                        // css样式层叠优先级是:浏览器缺省 < 外部样式表(引入的css文件) < 内部样式表(<style>标签内的样式) < 内联样式(style=”)
+                        // allA[j].style.backgroundColor = "red";
+                        allA[j].style.backgroundColor = ""//设置空字符串，使用原来的样式
+                    }
+                    //将索引处设置为选中状态
+                    allA[index].style.backgroundColor = "white";
+
+                    //3.3 依据索引改变偏移量实现图片的切换
+                    //imgList.style.left = - index*520 +"px";
+
+                    // 优化：图片是直接切换的，没有一个过渡的轮播效果
+                    // 这里用缓慢增加偏移量的方式实现，病将功能抽象成一个函数
+                    move(imgList, "left", -index * 480, 50, function () {
+                        autoChange();
+                        // alert("执行结束");
+                    });
+
+                    // 继续优化，实现自动轮播，单独抽象成一个函数 autoChange;
+                    
+
+                };
+               
+            }
+            // 执行自动轮播
+            autoChange();
+
+
+
+            function move(obj, att, target, speed, callback) {
+                // obj，需要改变样式的对象是谁
+                // att,需要改变的样式，宽还是高，颜色还是背景
+                // target，改到多少停下来
+                // 递增的速度是多少
+                // 回调函数，样式改变完后续还有什么操作
+
+                clearInterval(obj.timer);
+
+                //获取元素目前的位置
+                var current = parseInt(getStyle(obj, att));
+
+                //判断速度的正负值
+                //如果从0 向 800移动，则speed为正
+                //如果从800向0移动，则speed为负
+                if (current > target) {
+                    //此时速度应为负值
+                    speed = -speed;
+                }
+
+                obj.timer = setInterval(function () {
+                    var oldVal = parseInt(getStyle(obj, att));
+                    var newVal = oldVal + speed;
+                    //对于停止时需要判断
+                    if ((speed > 0 && newVal > target) || (speed < 0 && newVal < target)) {
+                        newVal = target;
+                    }
+
+                    // alert(newVal);
+
+                    obj.style[att] = newVal + "px";
+
+                    if (newVal == target) {
+                        clearInterval(obj.timer);
+                        callback && callback();
+                    }
+                }, 30);
+            };
+
+            // 1.设置index++，到了边界的时候需要修改
+            // 2.定时调用move函数，索引点也要变化。
+            // 3.与点击切换两个定时器会冲突，所以需要设置点击时关闭自动轮播，点击完用回调函数打开轮播
+            
+            var timer;
+            function autoChange() {
+                
+                timer = setInterval(function () {
+                    index++;
+                    index %= imgArr.length;
+
+                    move(imgList, "left", -index * 480, 50, function () {
+                       setA();
+                    });
+                }, 3000);
+
+
+            };
+
+
+            function setA(){
+                if (index >= imgArr.length-1) {
+                    index = 0;
+                    // 为了让最后一张的切换不会那么奇怪，这里偷梁换柱一下，在最后增加一张与第一张同样的
+                    // 图片，并且立刻将偏移量left设为0，切换回第一个位置，并且看不出来
+                    imgList.style.left = 0;
+                }
+
+                // 此时索引点也需要变化
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+                }
+                allA[index].style.backgroundColor = "white";
+            }
+
+
+
+            function getStyle(obj, name) {
+
+                if (window.getComputedStyle) {
+                    //正常浏览器的方式，具有getComputedStyle()方法
+                    return getComputedStyle(obj, null)[name];
+                } else {
+                    //IE8的方式，没有getComputedStyle()方法
+                    return obj.currentStyle[name];
+                }
+
+            }
+
+        };
+    </script>
+
+</head>
+
+<body>
+    <!-- 要实现轮播图
+    1.图片由li组成，并且是向右并排，通过偏移量来实现图片的切换
+    2.下面的点也是另一个ul
+    3.点如何实现与图片的关联，点击点可以改变图片的字符串实现改变，但是要实现图片的缓慢切换状态
+    则需要借助 自定义move函数，可以自定义平移多少  
+    -->
+
+    <div id="box1">
+        <ul id=imgList>
+            <li><img src="./img/img01.jpg" alt=""></li>
+            <li><img src="./img/img02.jpg" alt=""></li>
+            <li><img src="./img/img03.jpg" alt=""></li>
+            <li><img src="./img/img04.jpg" alt=""></li>
+            <li><img src="./img/img05.jpg" alt=""></li>
+            <li><img src="./img/img01.jpg" alt=""></li>
+        </ul>
+
+        <div id="box2">
+            <ul>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

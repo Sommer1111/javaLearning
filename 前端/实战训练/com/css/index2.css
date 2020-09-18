@@ -1,0 +1,633 @@
+
+/* 以下为顶部导览框样式设置 */
+
+
+/* 设置顶部导览框浮动 */
+.local,
+.wrapper-list li{
+    float:left;
+}
+
+.wrapper-list{
+    float:right;
+}
+
+/* 设置外部容器的基本样式 */
+.top-bar-wrapper{
+    background-color:#E3E4E5;
+    width:100%;
+    height:30px;
+    line-height: 30px;
+}
+ 
+/* 设置左边定位部分样式 */
+
+/* 设置左边定位的基本样式 */
+.local{
+    color:#999999;
+    width: 52px;
+    text-align: center;
+
+}
+/* 定位图标样式 */
+ .local i{
+     color: red;
+     margin-right:2px;
+ }
+/* 下拉定位地点外部样式 */
+.local-list{
+    float: left;
+    width: 250px;
+    height: 300px;
+    padding: 15px;
+    background-color:white;
+    border:1px solid #e2dddd;
+    border-top:none;
+
+    top:30px;
+
+    display:none;
+    z-index: 999;
+  
+}
+/* 地点列表样式 */
+.local-list li{
+    float: left;
+
+}
+/* 超链接地点样式 */
+.local-list a{
+    display: block; 
+    width: 50px;
+    line-height: 30px;
+}
+
+.local-list a:hover{
+    background-color:#E3E4E5;
+    color:red;
+}
+
+/* 鼠标hover 下拉出现 */
+.local>a:hover,
+.local-list:hover,
+.local:hover>a,
+.local:hover>.local-list{
+    position: absolute;
+    display:block;
+    background-color:white;
+    border:1px solid #e2dddd;
+}
+
+.local:hover>a{
+    border-bottom:none;
+}
+
+.local:hover >.local-list{
+    border-top:none;
+}
+
+
+
+/* 设置右边导航样式 */
+
+/* 分割线样式 */
+.split{
+    font-size:10px;
+    color:#ccc;
+    margin:0 10px;
+}
+/* 字体默认样式 */
+.wrapper-list .normal-color {
+    color:red;
+}
+/* 图标样式 */
+.wrapper-list i{
+    font-size:8px;
+    color:#A0A0A0;
+    margin: 0 3px;
+}
+/* 所有导航的hover统一样式 */
+.wrapper-list a:hover{
+    color: red;
+
+}
+
+
+
+/* 设置收集京东下拉框样式 */
+/* 下拉框的外部样式 */
+.download{
+    width: 180px;
+    height: 355px;
+    border:1px solid #ccc8c8;
+    background-color:white;
+
+    position: absolute;
+    right:0px;
+
+    display:none;
+    z-index: 999;
+}
+/* 列表样式 */
+.download li{
+    position: relative;
+    width: 100%;
+    border-bottom:1px solid #f8f4f4;
+}
+/* 列表中的图片样式 */
+.download img{
+    width: 66px;
+    margin:10px 5px 5px 5px;
+}
+/* 列表中的文字样式 */
+.download .bold{
+    position: absolute;
+    top:10px;
+}
+/* 文字样式 */
+.download a,
+.download a:hover{
+    font-size:20px;
+    color: black;
+    vertical-align: top;
+}
+/* 微调下三角定位 */
+.phone-web{
+    position: relative;
+}
+/* 下拉框上下三角箭头样式 */
+.phone-web::after{
+    content:'';
+    position: absolute;
+    border:6px solid white;
+    border-top:none;
+    border-right-color: transparent;
+    border-left-color:transparent;
+    top:26px;
+    right:13px;
+
+    display:none; 
+    z-index: 999;  
+   
+}
+/* 鼠标hover之后出现 */
+.phone-web:hover,
+.phone-web:hover .download,
+.phone-web:hover::after {
+    display:block;
+}
+
+
+
+
+/* 以下为中部搜索wrapper设置 */
+
+/* 外部基本样式 */
+.mid-bar-wrapper{
+    height:140px;
+    border-bottom:1px solid #DDDDDD;
+    background-color:white;
+    
+}
+
+.mid-left,
+.mid-search,
+.act-nav li,
+.home-nav li{
+    float:left;
+}
+.mid-qrcode{
+    float:right;
+}
+
+/* 设置两边图片的样式 */
+.mid-left,
+.mid-qrcode{
+    width: 120px;
+    height: 140px;
+    overflow: hidden;
+    z-index: 99;
+}
+.mid-left img{
+    padding-top: 10px;
+    width: 90%;
+}
+.mid-qrcode img{
+    float:right;
+    width: 66px;
+    margin:5px;
+    
+}
+
+/* 设置中间部分的样式 */
+
+/* 中间外部容器样式 */
+.mid-search{
+    width: 790px;
+    height: 140px;
+    margin:0 80px;
+    position:relative;
+   
+}
+
+/*设置搜索框外部容器样式 */
+.search{
+    width:680px;
+    height: 36px;
+    margin-left:50px;
+    padding-top:24px;
+}
+/* 搜索框样式 */
+.search input{
+    width: 488px;
+    height: 32px;
+    vertical-align: center;
+    border:2px solid red; 
+}
+/* 设置input获取焦点后的样式 */
+input:focus{
+   outline: none;
+   padding-left: 20px;
+   font-weight: bold;
+   font-size:16px;
+}
+/* 设置搜索按钮样式 */
+.search button{
+    width: 58px;
+    height: 38px;
+    background-color:#E1251B;
+    color:white;
+    border:2px solid #E1251B;
+    font-size:16px;
+    margin-left: -5px;
+    margin-top:1px;
+}
+/* 设置搜索框内的拍照图标样式 */
+.search .cam{
+    font-size:20px;
+    position: absolute;
+    top:34px;
+    right:260px;
+    color:#666;
+    z-index: 9;
+}
+/* 设置购物车样式 */
+.shop-car{
+    width: 128px;
+    height: 36px;
+    border:2px solid #EEEEEE;
+    position: absolute;
+    top:27px;
+    right:20px;
+    line-height: 36px;
+    text-align: center;
+}
+.shop-car a{
+    margin:0 8px;
+    color:red;
+}
+.shop-car i{
+    color:red;
+    font-size:15px;
+    margin-top:4px;
+}
+.shop-car:hover{
+    border:2px solid red;
+}
+
+
+/* 设置搜索框下面的超链接样式 */
+.act-nav{
+    width: 550px;
+    height: 20px;
+    margin-top:10px;
+    
+    margin-left:50px;
+    color:#A2A2A2;
+}
+
+.act-nav a{
+    margin-right:10px;
+}
+.act-nav a:hover{
+    color:red;
+}
+.act-nav li:first-child a{
+    color:red;
+}
+
+
+/* 设置最下面的超链接样式 */
+.home-nav{
+    width: 760px;
+    height: 40px;
+    padding-top: 10px;
+    line-height: 40px;
+    margin:0 auto;
+}
+/* 设置具体细节 */
+.home-nav a{
+    font-size: 15px;
+    color: #333;
+    margin: 0 11px;
+}
+.home-nav .bold{
+    color:red;
+    font-weight:bold;
+}
+.home-nav a:hover{
+    color:red;
+
+}
+
+/* 以下设置中部的图片展示部分 */
+
+/* 先设置大体的布局，大小 */
+.pics-bar-wrapper{
+    width: 100%;
+    height: 470px;
+    margin-top:10px;
+    
+}
+.services-list,
+.services-show,
+.services-link,
+.show-main,
+.show-mini{
+    float:left;
+
+}
+.services-list{
+    width: 190px;
+    height: 450px;
+    margin-right:10px;
+    padding:10px 0;
+    background-color:white;
+}
+.services-show{
+    width: 790px;
+    height: 470px;
+    background-color:white;
+
+    
+    
+}
+.show-main{
+    width: 590px;
+    height: 470px;
+    margin-right:10px;
+    position: relative;
+    
+
+}
+.show-mini{
+    width: 190px;
+    height: 470px;
+    position: relative;
+
+}
+
+.services-link{
+    width:190px;
+    height: 470px;
+    margin-left:10px;
+    background-color:white;
+}
+
+/* 以下设置每一个块元素的具体的样式 */
+/* 左边网址导览框样式设置 */
+.services-list li{
+    width: 172px;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 18px;
+    display:block;
+
+}
+.services-list li:hover{
+    background-color:#b3afaf;
+}
+.services-list a{
+    font-size:14px;
+    color:#333;
+}
+.services-list li a:hover{
+    color:red;
+}
+
+/* 中间图片展示框 */
+.show-main img{
+    width: 100%;
+   
+}
+/* 设置下面的点 */
+.show-main .point{
+    position: absolute;
+    bottom:10px;
+    padding-left:20px;
+
+}
+/* 设置点的具体样式 */
+.show-main .point li{
+    float: left;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin:0 2px;
+    background-color:rgba(255, 255, 255, .3);
+    border:2px solid rgba(255, 255, 255, .6);
+
+    z-index: 999;
+}
+
+.point li:hover,
+.point li:first-child{
+    background-color:rgba(255, 255, 255, .6);
+    border:2px solid rgba(255, 255, 255, .3);
+}
+.pre-after i,
+.ago-next i{
+    position:absolute;
+    font-size:18px;
+    color:rgba(255, 255, 255, 0.74);
+}
+
+/* 设置左右切换图标的样式 */
+.pre,
+.ago{
+    top:235px;
+    left:5px;  
+}
+.after,
+.next{
+    top:235px;
+    right:5px;
+}
+
+/* 设置展示小图片 */
+.show-mini li{
+    width: 190px;
+    height: 150px;
+    margin-top:10px;
+}
+.show-mini li:first-child{
+    margin-top:0;
+}
+
+.show-mini img{
+    width: 100%;
+    
+}
+
+/* 设置最右边的banner */
+.users-vip{
+    position: relative;
+    height: 103px;
+    border-bottom:1px solid rgba(228, 216, 216, 0.63);
+}
+
+.users-vip li{
+    float:left;   
+}
+/* 图片 */
+.users-vip img{
+    border-radius: 50%;
+    width: 40%;
+    margin:20px 0 0 20px;
+}
+
+.vip{
+    position: absolute;
+    top:20px;
+    left:70px;
+    
+}
+.vip a{
+    color:#333;
+
+}
+.vip span{
+    color:#333;
+    margin:0 3px;
+    font-size:12px;
+}
+.vip a:hover{
+    color:red;
+}
+
+/* 下面两个样式 */
+.new-user a,
+.vip-user a{
+    color:white;
+
+}
+.new-user:hover,
+.vip-user:hover{
+    background-color:rgba(224, 29, 29, 0.747);
+
+}
+
+
+.new-user{
+    height:25px;
+    width: 70px;
+    line-height: 25px;
+    text-align:center;
+    background-color:#E1251B;
+    border-radius: 15px;
+    margin:5px 10px 5px 20px;
+}
+
+.vip-user{
+    height:25px;
+    width: 70px;
+    line-height: 25px;
+    text-align:center;
+    background-color:#363634;
+    border-radius: 15px;
+    margin:5px 10px 5px 0px;
+}
+
+/* 设置新闻列表样式 */
+.news-info{
+    width: 190px;
+    height: 130px;
+    border-bottom:1px solid rgba(228, 216, 216, 0.63);
+
+}
+/* 新闻标题部分样式 */
+.title{
+   height: 30px;
+   line-height: 30px;
+   margin-left: 10px;;
+}
+.title h1{
+    font-size:14px;
+    font-weight: bold;
+    
+}
+h1 a{
+    font-weight: 500;
+    margin-left:70px;
+    
+}
+h1 a i{
+    margin-left: 5px;
+}
+h1 a:hover{
+    color:red;
+}
+/* 新闻内容部分样式 */
+.passage{
+    width: 190px;
+    height: 150px;
+}
+.passage li{
+    margin-bottom:5px;
+}
+.passage li>a{
+    float: left;
+    color:red;
+    display:block;
+    margin:0 5px 0 10px;
+    background-color:#dbc9c8;
+}
+.passage li>a:hover +.new a{
+    color:red;
+}
+.new a{
+    color:#333;;
+}
+
+/* 新闻下面超链接图标样式 */
+.label-list{
+    padding-left: 10px;
+}
+.label-list a{
+    float: left;
+    display: block;
+    color:#333;
+    height: 60px;
+    width: 55px;
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+/* 设置图标字体 */
+.label-list a i{
+    display: block;/* 图标字体一设置block后面的文字就会换行了 */
+    margin-top: 10px;
+    color: #85583a;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+
+
+
+
+
+
+
+ 

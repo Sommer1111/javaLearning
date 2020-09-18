@@ -1,0 +1,143 @@
+<!--
+    CSS 的flex 弹性盒：
+       CSS3中提出的新的布局的工具，设置浮动，脱离文档流之后的布局会出现很多预想不
+       到的问题。需要更强大、更简单高效的布局方法。
+       flex是新提出的方法，可能对一些老版本PC的浏览器不兼容，但是对于移动端是非常
+       适用的，并且也是未来网页布局的发展方向。
+
+    1.1 弹性容器：开启了flex的容器
+      display：flex，开启块元素的弹性盒
+      display：inline-flex，开启行内元素的容器盒
+
+        1.1.1 flex-direction：弹性元素在容器中的排布方式
+          |--row:水平方向排布（row-reverse）
+          |--column:纵向排布(column-reverse)
+
+        1.1.2 flex-wrap:内容排不下是否自动换行。
+          |--wrap:多了就沿辅轴换行(wrapreverse)
+          |--nowrap
+
+        1.1.3 flex-flow: row wrap  (将前面两个合在一起的属性)
+
+        1.1.4 justify-content：如何处理分布主轴上的空白空间。
+          |-- flex—start:左对齐（flex-end 右对齐）
+          |-- center：中间对齐
+          |-- space-around：均匀分步在四周
+          |-- space-between:分布在元素之间
+          |-- space-evenly:分布在单侧
+
+        1.1.5 align-items:纵向如何对齐分布
+          |--felx-start:正常上对齐
+          |--flex-end:下对齐
+          |--center:中间对齐
+          |--strech:默认将高度设置成一致的
+          |--baseline:基线对齐
+
+    1.2 弹性元素：开启了flex的元素
+          |--flex-grow:多余空间的分配原则。
+             一般使用 flex-grow：1，就是所有元素均匀分布铺满。
+             
+          |--flex-shrink：空间不够，各元素缩小的原则。
+
+          |--flex-basis：设置元素的基准大小。
+              |--auto：默认值，本身的大小
+
+          |--flex 设置元素样式的混合
+            flex：grow shrink basis
+                |--auto：flex：1 1 auto
+                |--initial：flex ：0 1 auto
+
+          |--order:决定元素排列的顺序。
+
+
+    1.3 相素
+        |--物理相素：屏幕的相素点
+        |--CSS相素，每一个px的长度
+        |--视口：屏幕显示的宽度大小，视口的大小决定了，物理相素与CSS相素的转换比值
+            物理相素是固定的，改变的是视口大小，相当于给图片设置放大缩小，会很大程度的
+            影响用户的体验感。
+
+    1.4 手机显示网页：
+         一般将网页视口设置为980px，可以在移动端直接显示，再小就缩放
+         但是看不清，用户体验感就会不佳。所以一般专门开发PC网页、移动端网页
+
+        |--完美视口：写网页时，CSS相素与物理相素一个比较好的比值，1：2/1：3
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        |-- 视口：vw
+         1 vw = 1% 视口大小
+         一般不再使用px来作为单位，反而进行转化 width: 693/40rem;
+
+        |-- 响应式分布：@media{},为尽可能的自适应各种显示大小的一个折中的方式。
+           |---适应显示器
+                @media screen，print{
+                  body{
+                    background-color：white；
+                  }
+                }
+
+           |--适应屏幕大小
+                @media screen and (min-width：500px) and max-width:700px){
+                  body{
+                    font-size:15px;
+                  }
+                }
+
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      .box1{
+    
+       display:flex;
+       justify-content:space-around;
+       flex-wrap: wrap;
+       align-items: baseline;
+       
+      }
+      .box2{
+        
+        background-color:crimson;
+        width: 200px;
+        height: 200px;
+
+      }
+
+      .box3{
+        
+        background-color:yellow;
+        width: 200px;
+        height: 200px;
+
+      }
+      .box4{
+       
+        background-color:green;
+        width: 200px;
+        height: 200px;
+
+      }
+
+      @media all and (min-width:500px) and (max-width:800px){
+       .box1{
+        background-color:pink;
+       }
+        
+      }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+      <div class="box2">1 </div>
+      <div class="box3">2</div>
+      <div class="box4">3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+        }
+
+    </style>
+
+    <script>
+        //要实现鼠标的上滚下滚让box变长或缩短。
+        //1.box1绑定滚轮函数
+        //2.获取上滚下滚的信息
+        //3.改变边长
+
+        //优化：火狐不支持 onmousewheel,需要使用 DOMMouseScroll
+        window.onload = function(){
+            var box = document.getElementById("box");
+            document.onmousewheel = function(event){
+               
+                event = event || window.event;
+                if(event.wheelDelta <0 || event.detail > 0){
+                    box.style.height= box.clientHeight + 10 + "px";
+
+                }else{
+                    box.style.height = box.clientHeight - 10 + "px";
+                }
+
+            };
+            return false;
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+</html>

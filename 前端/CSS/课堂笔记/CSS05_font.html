@@ -1,0 +1,183 @@
+<!--
+    关于字体：图片放大缩小会出现失真，有时也不过灵活，许多图标做成字体。实用美观
+
+    1.常见字体设置
+       color
+       font-size
+       font-family:设置字体族
+            |--serif 衬线字（一类，只要边上代勾类的都叫衬线字）
+            |--sans-serif 非衬线字
+            |--monospace 等宽字体
+        line-height:行高，设置行高可以是文字居中
+        font-style,设置斜体之类风格
+        font-weight,加粗
+
+        或者可以直接从项目导入字体
+          @font-face{
+              font-family:
+              src:url(路径)
+          }
+
+
+
+    2. 常用字体图标库(iconfont) 及设置图标的方式
+      国外：fontawesome
+         |--将all.css引入文档，
+         |--通过类名class="fas fa-bell"
+                   class="fab fa-accessible-icon"
+  
+         |--利用伪元素的content+具体的编码
+            content:里面设置的是字体图标的编码
+             font-family里面设置引入图标的编码格式
+
+         |--利用实体
+            <span class="fas">&#xf0f3;</span>
+
+      国内：阿里字体,下载项目导入。iconfont设置
+
+
+    3.文本的格式
+      3.1 水平对齐方式 text-align
+      3.2 垂直方向对其 vertical-align
+      3.3 文本修饰 text-decoration
+         下划线
+         删除线
+         上划线
+
+      3.4 white-space 设置网页如何处理空白
+           normal 正常
+           nowrap 不换行
+           pre 保留空白
+
+           设置过多的显示 ...省略号替代 固定格式
+       .box2{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        
+    4. 背景
+     4.1 背景图片
+       backgroung-img:url(地址)
+       background-repeat：重复方式
+       backgroung-position： 定位
+       background-clip：显示范围
+       background-origin:相对于根节点的偏移量
+       backgroung-size:图片大小
+
+     4.2 渐变色
+        background-image: linear-gradient(red,yellow);
+        径向渐变：
+        background-image: radial-gradient(farthest-corner at 100px 100px, red , #bfa)
+
+     4.3 实际应用
+        ① 利用图片的水平方向的重复来设置背景
+
+        ② 利用背景图片的切换来形成一种动态点击的效果
+            因为图片是需要加载的，所以为了避免初次加载时出现闪的效果
+            将各种状态图合成一张：叫雪碧图，加上偏移量实现切换的效果，应用非常广泛
+
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fa/css/all.css">
+
+    <style>
+        .box p{
+        font-size:30px;
+        color:chartreuse;
+          }
+
+        p{
+            font-size: 30px;
+            color:blue;
+            /*font-family: Arial, Helvetica, serif;*/
+            font-family: myfont;
+            line-height: 200px;
+            background-image: linear-gradient(red,yellow);
+            
+
+        }
+
+        /*myfont指自定义的名字*/
+
+        @font-face{
+            font-family: "myfont";
+            src: url(../../code/06_font&background/font/ZCOOLXiaoWei-Regular.ttf);
+        }
+
+        .set1{
+            font: bold italic 50px/2 Arial, Helvetica, sans-serif;
+        }
+
+       .set1::before{
+            content: '\f6b6';
+            font-family: 'Font Awesome 5 Free';
+            font-size: 50px;
+
+
+        }
+
+        .text{
+    
+            width: 800px;
+            text-align: right;
+            text-decoration: underline;
+            background-image: url(./1.jpeg);
+            background-size: cover;
+            background-clip: content-box;
+
+        }
+
+    </style>
+    
+</head>
+<body>
+
+    <p>有一小鱼出游从容，燕雀安知鸿鹄之志哉！</p>
+    <div class="box">
+        <p class="fas fa-bell" ></p>
+    </div>
+    <!--
+        或者直接设置
+    -->
+    <p class="fab fa-accessible-icon" style= "font-size: 60px;color:red;"></p>
+    
+
+    <div class="box2">
+        <div class="set1">
+            君不见黄河之水天山来
+        </div>
+        <div class="set1">
+            君不见高堂明镜悲白发
+        </div>
+        <div class="set1">
+            将进酒杯莫停
+        </div>
+        <div class="set1">
+            与君歌一曲请君为我倾耳听
+        </div>
+
+        <span class="fas">&#xf0f3;</span>
+    </div>
+
+    <div class="text">
+        人的力量来自于思想，书籍承载的是超越时空和人类历史最高的思想对话的机会，哪怕只是浅浅的理解，都是极其美好的事情，不读书，会错过很多美好。
+        人的力量来自于思想，书籍承载的是超越时空和人类历史最高的思想对话的机会，哪怕只是浅浅的理解，都是极其美好的事情，不读书，会错过很多美好。
+        人的力量来自于思想，书籍承载的是超越时空和人类历史最高的思想对话的机会，哪怕只是浅浅的理解，都是极其美好的事情，不读书，会错过很多美好。
+        人的力量来自于思想，书籍承载的是超越时空和人类历史最高的思想对话的机会，哪怕只是浅浅的理解，都是极其美好的事情，不读书，会错过很多美好。
+        人的力量来自于思想，书籍承载的是超越时空和人类历史最高的思想对话的机会，哪怕只是浅浅的理解，都是极其美好的事情，不读书，会错过很多美好。
+    </div>
+    
+</body>
+</html>

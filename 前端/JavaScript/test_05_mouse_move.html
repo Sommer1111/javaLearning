@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+            position:absolute;
+        }
+
+        #box2{
+            width: 200px;
+            height: 300px;
+            background-color:green;
+            position: relative;
+            top:200px;
+            
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+            //要实现鼠标拖拽移动，需要绑定onmousedown onmousemove onmouseup
+            //1.在box1中绑定onmousedown事件
+            //2.里面再绑定onmousemove 事件获取move的位置，修改位置
+            //3.onmouseup 事件触发，释放onmousemove onmouseup事件
+
+            //1.优化：鼠标位置总是在 box1 的左上角
+            //调整偏移量,将box进行偏移。
+            //要获取触发当前事件的mouse位置,既box1的位置信息，相对于box1来讲的偏移量
+
+            //2.浏览器对于全选，如果选中文本的话会默认进行搜索，并且全部文本都会跟着移动
+
+
+            var box1 = document.getElementById("box1");
+
+            //1.在box1中绑定onmousedown事件
+            box1.onmousedown = function(event){
+                
+                event = event ||window.event;
+                
+                event.setCapture && event.setCapture();
+                //捕获所有点击，鼠标指针位于哪个窗口区域内，
+                //鼠标消息就自动发给哪个窗口。如果调用了SetCapture，
+                //之后无论鼠标的位置在哪，鼠标消息都发给指定的这个窗口，
+                //直到调用ReleaseCapture或者调用SetCapture设置另一个窗口为止
+
+                //获取鼠标的偏移量，是box的位置-鼠标的位置
+                var l = event.clientX-box1.offsetLeft;
+                var h = event.clientY-box1.offsetTop;
+
+               document.onmousemove = function(event){
+                    event = event || window.event;
+
+                    var width = event.clientX - l;
+                    var height = event.clientY - h;
+                    box1.style.left = width+"px";//这里尤其注意！不加px有问题
+                    box1.style.top = height+"px";
+                };
+
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+
+            };
+
+            event.releaseCapture && event.releaseCapture();
+            //取消浏览器的默认操作，避免拖拽异常
+            return false;
+
+        }
+    </script>
+</head>
+<body>
+    <p>我是文本</p>
+    <div id="box1">
+    </div>
+
+    <div id="box2">
+        
+    </div>
+   
+    
+</body>
+</html>

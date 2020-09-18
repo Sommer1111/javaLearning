@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+                
+                var imglist = ["./img/img01.jpg", "./img/img02.jpg",
+                    "./img/img03.jpg", "./img/img04.jpg", "./img/img05.jpg"];
+                var img = document.getElementsByTagName("img")[0];
+                var index = 0;
+                var timer;
+
+                //1，绑定响应函数
+                //2.响应函数内部实现定时功能
+                //3.关闭定时
+
+                var pre = document.getElementById("pre");
+                pre.onclick = function () {
+                    clearInterval(timer);
+                    // 非常注意！我们每点击一次按钮，就会开启一个定时器，
+					//点击多次就会开启多个定时器，这就导致图片的切换速度过快，
+					//并且我们只能关闭最后一次开启的定时器，所以要在开头先关闭之前开启的定时器
+                   
+                   
+                    timer = setInterval(function(){
+                        index++;
+                        index %= imglist.length;
+                        img.src = imglist[index];
+                    },1000);
+
+                };
+
+                var end = document.getElementById("end");
+                end.onclick = function(){
+                    clearInterval(timer);
+                };
+
+
+                var box2 = document.getElementById("box2");
+                var direction = 0;
+                var step
+                document.onkeydown = function(event){
+                    event = event || window.event;
+                    direction = event.keyCode;
+                    clearInterval(step);//不写这一句速度会叠加
+
+                    step = setInterval(function(){
+                        
+                        switch(direction){
+                        case 37://左
+                            box2.style.left = box2.offsetLeft - 10 + "px";
+                            break;
+                        case 38://上
+                            box2.style.top = box2.offsetTop - 10 + "px";
+                            break;
+                        case 39://右
+                            box2.style.left = box2.offsetLeft + 10 + "px";
+                            break;
+                        case 40://下
+                            box2.style.top = box2.offsetTop + 10 + "px";
+                            break;
+                    }
+
+                    },30);
+
+                    
+                };
+
+                document.onkeyup = function(){
+                    direction = 0;
+                }
+
+            };
+        
+
+    </script>
+</head>
+<body>
+    <!-- 实现图片的自动播放 -->
+    <div id="box1">
+        <img src="./img/img01.jpg" width = 400px alt="">
+        <br>
+        <button id = "pre">开始轮播</button>
+        <button id = "end">结束轮播</button>
+
+
+    </div>
+
+    <!-- 键盘控制框移动时动作流畅连贯 -->
+    <div id="box2"> </div>
+
+
+
+    <!-- 广告的5秒显示延时关闭 -->
+    
+</body>
+</html>

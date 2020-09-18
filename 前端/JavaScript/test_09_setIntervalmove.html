@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 0px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var after = document.getElementById("after");
+            var timer
+            after.onclick = function () {
+                clearInterval(timer);
+
+                timer = setInterval(function () {
+                    //oldleft = box1.offsetLeft;如果我要实现不仅仅往左往右，进行优化
+                    var old = parseInt(getStyle(box1, "width"));
+                    //alert(oldwidth);//100px
+
+                    var newstyle = old + 10 + "px";
+                    box1.style["width"] = newstyle;
+                }, 100);
+            };
+
+            var box2 = document.getElementById("box2");
+            var pre  = document.getElementById("pre");
+            pre.onclick = function(){
+                //alert("运行");
+                change(box2,"height",10,function(){
+                    change(box2,"width",10,function(){
+                    
+                });
+                });
+            };
+
+        };
+
+        //进一步将功能抽象成一个函数
+        function change(obj,name,speed,callback){
+            //继续优化：判断 speed 应该是向左还是向右为正值还是为负值
+            //继续优化：增加回调函数 callback()，进一步扩展功能
+
+            
+           obj.onclick = function () {
+               //为自身创建一个属性，也就是不在需要把它定义为全局的定时器，当有多个对象是会串销。
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    var old = parseInt(getStyle(obj, name));
+                    var newstyle = old + speed ;
+                    obj.style[name] = newstyle + "px";
+                }, 100);
+
+                if(newstyle>200){
+                    clearInterval(obj.timer)
+                    //动画执行完毕，调用回调函数
+			        callback && callback();
+                }
+            };
+
+        };
+
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                //正常浏览器的方式，具有getComputedStyle()方法
+                return getComputedStyle(obj, null)[name];
+            } else {
+                //IE8的方式，没有getComputedStyle()方法
+                return obj.currentStyle[name];
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <button id="after">点击box1向右移动</button>
+    <button id="pre">点击box1向左移动</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+
+</html>

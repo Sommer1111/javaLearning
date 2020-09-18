@@ -1,0 +1,173 @@
+<!--
+    CSS动态效果
+    
+      1.过渡 transition：画面切换过程的效果，避免看起来太突兀。但是需要用户交互才会出现（hover）
+        
+         |---transition-property:需要过渡的属性比如宽高
+            |---all，所有可被动画的属性都表现出过渡动画。
+         |---transition-duration:效果持续时间
+         |---transition-delay:过渡效果出现的延时
+         |---transition-timing-function:效果基于的函数（加速减速）
+            |---steps(n,start)，分几步实现过渡，开始时过渡还是结束时过渡
+      
+        在块中设置本身过渡时的属性，在交互的设置（hover）中设置
+            终状态的属性
+        transition:2s margin-left 1s cubic-bezier(.24,.95,.82,-0.88);
+
+      2.动画 animation：大部分同过渡，自动触发态。需预先设置需要执行的动态效果。
+
+         |---animation-name:动画的名字，区分调用的动画效果时哪个。
+         |---animation-duration、animation-delay、animation-timing-function
+         |---animation-iteration-count:动画执行次数。infinite无限
+         |---animation-direction:动画执行方向
+            |--normal
+            |--reverse
+            |--alternate
+            |--reverse-alternate
+            
+         |---animation-fill-mode:是否回到原来的状态
+            |---none
+            |---forwards：停在结束位置
+            |---backwards：从头开始
+            |---both
+
+      3. 变形：transform,用来改变元素的形状或位置,可以用来设置鼠标放在上面就突出显示的效果
+          
+         3.1 位移效果（也可用于设置元素位于页面居中的效果）
+            |--- translateX(100px/50%)
+            |--- translateY()
+            |--- translateZ()
+          
+         3.2 旋转效果,旋转与块元素的大小有关，不一定是沿自身中线旋转
+             3.2.1  坐标·方位：
+                从屏幕直指向我们这个方向是 Z轴
+                屏幕竖直向下这个方向是 Y轴
+                面对屏幕直向右是 X轴
+            |---transform: rotateX(180deg/2turn)
+            |--- transform-origin: left center; 改变旋转中心
+            |--rotateY()
+            |--rotateZ()
+             
+            3.2.2 旋转加位移，比较难理解，自己画图观察。
+            transform: rotateX(90deg) translate(100px);
+
+         3.3 缩放效果
+            |--scaleX()
+            |--scaleY()
+            |--scale()
+
+    4.设置背景样式：
+      |---背景图片：background-image:url();
+      |---背景图片大小：background-size
+         |---cover，铺满
+         |---auto,随背景缩放
+         |---contain，尽可能铺满一个方向
+         |---具体设置大小
+            
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        /*1.设置过渡的样式*/
+
+        /*设置body的大小，只要鼠标放在上面就会出现过渡状态*/
+        body{
+            width: 800px;
+            height: 1000px;
+        }
+
+        /*过渡时的各项设置*/
+        .box1-transition{
+            width: 100px;
+            height: 100px;
+            background-color:chartreuse;
+            transition-property: all;
+            transition-duration: 2s;
+            transition-delay:1s;
+            transition-timing-function: steps(3,end);
+           
+        }
+
+        /*过渡要到达那种状态，一触发body，box1就往右移动700px*/
+        body:hover .box1-transition{
+            margin-left: 300px;
+            
+        }
+
+
+        /*2. 设置动画的样式*/
+
+        .box2-animation{
+            margin-top:300px;
+            
+            animation: animation-test 2s infinite 1s alternate-reverse;
+        }
+
+        @keyframes animation-test{
+            from{
+                margin-left:0px;
+                width: 100px;
+                height: 100px;
+                background-color: chartreuse;
+            }
+
+            to{
+                margin-left:300px;
+                width: 200px;
+                height: 300px;
+                background-color: red;
+
+            }
+        }
+
+        /*3.设置变形的样式*/
+
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: goldenrod;
+            
+        }
+
+        .box3:hover{
+            transform:translateY(5%);
+            box-shadow:0 0 10px rgb(0,0,0,.7);
+
+       
+        }
+
+         /*4.设置旋转样式*/
+
+         html{
+            perspective: 800px;
+        }
+        .box3-rotate{
+            width: 300px;
+            height: 300px;
+        }
+
+
+         body:hover .box3-rotate{
+             transform: rotateY(180deg);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1-transition"></div>
+    <div class="box3"></div>
+    <div class="box3-rotate"><img src="./an.jpg" alt=""></div>
+
+    <div class="box2-animation"></div>
+    
+
+    
+    
+</body>
+</html>

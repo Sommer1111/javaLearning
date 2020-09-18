@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+
+    <style>
+        
+        .image-list{
+            width: 590px;
+            height: 470px;
+            margin: 100px auto;
+            position:relative;
+        }
+
+        /*设置图片重叠在一起实现轮播，到他了显示*/
+        .image-list li{
+            position: absolute; 
+        }
+
+        /* 修改层级来显示相应的图片*/
+        .image-list :nth-child(3){
+            z-index: 4;
+        }
+
+        .point{
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            left: 40px;
+            
+        }
+
+
+        /*显示导航点*/
+        .point a {
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;/*变成了圆点*/
+            background-color: rgba(255,255,255,.3);
+            margin-left: 5px;
+            top: 100px;
+            left:20px;
+
+             /* 将背景颜色值设置到内容区，边框和内边距不在有背景颜色 */
+            background-clip: content-box;
+            border: 2px solid transparent;
+
+        }
+
+        .point a .active,/*轮播到相应图片时也要有如鼠标点击效果*/
+        .point a:hover{
+            background-color: #fff;
+            border: 2px solid  rgba(255,255,255,.3);
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="image-list">
+        <ul>
+            <li><a href="javascript:;"><img src=".//returnplayimg/1.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/2.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/3.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/4.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/5.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/6.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/7.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src=".//returnplayimg/8.jpg" alt=""></a></li>
+
+        </ul>
+
+        <div class="point">
+            <a  class= active href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+    
+</body>
+</html>

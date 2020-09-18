@@ -1,0 +1,166 @@
+a{
+    text-decoration: none;
+    color:white;
+
+    &:hover{
+        color:rgb(197, 196, 196);
+    }
+}
+.top-bar-wrapper{
+    background-color:black;
+}
+
+.bar-wrapper{
+    max-width: 1200px;
+    height: 48px;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.left-menu{
+    &:active{
+        .nav{
+            display:block;
+        }
+    }
+    .list{
+        width: 18px;
+        height: 48px;
+        position: relative;
+
+        li{
+            width: 18px;
+            height: 1px;
+            background-color:white;
+            position: absolute;
+            transition: 0.5s;
+            // 改变旋转的中心
+            transform-origin: left;
+        }
+
+        li:nth-child(1){
+            top:18px;
+        }
+        li:nth-child(2){
+            top:24px;
+        }
+
+        li:nth-child(3){
+            top:30px;
+           
+        }
+
+        // 设置鼠标移入时的状态变化
+        &:active{
+            li:nth-child(1){
+                transform:rotateZ(40deg);
+            }
+            li:nth-child(2){
+                opacity: 0;
+                // 设置透明显示，相当于隐藏
+            }
+            li:nth-child(3){
+                transform:rotateZ(-40deg);
+            }
+        }
+
+    }
+    .nav{
+        display:none;
+        position: absolute;
+        padding-top:60px;
+        background-color:black;
+        // 设置整个页面的颜色
+        top:48px;
+        bottom: 0;
+        right:0;
+        left:0;
+
+        li{
+            // 给列表设置外部样式
+            width: 80%;
+            margin:0 auto;
+            border-bottom:1px solid #757474;
+            
+            a{
+                // 设置超链接的样式
+                display:block;
+                line-height: 44px;
+                font-size:14px;
+            }
+
+            &:last-child a{
+                display:inline-block;
+                margin-right: 6px;
+            }
+
+            span{
+                color:white;
+                font-size:14px;
+            }
+        }
+        
+      
+    }
+  }
+  
+//   设置logo
+.logo{
+    a{
+        // 将形容的话移除不显示在页面，但是能被搜索引擎搜索到
+        text-indent:-99999px;
+        display:block;
+        // 图片设置的是两倍所以需要减半
+        width: 122px;
+        height: 32px;
+        background-image: url(./dff63979.sprites-index@2x.png);
+        background-size: 400px 400px;
+    }
+}
+
+// 设置媒体响应之后的样式
+@media only screen{
+    @media (min-width:768px) {
+        .left-menu{
+            // 直接改变显示的顺序
+            order:2;
+            flex:auto;
+
+            .nav{
+                display:flex;
+                // 把原来的效果全部消除
+                position:static;
+                padding:0;
+                justify-content: space-around;
+
+                li{
+                    width: auto;
+                    border-bottom:none;
+                    margin:0;
+
+                    a{
+                        line-height: 48px;
+                    }
+                    span{
+                        display:none;
+                    }
+                }
+            }
+
+            .list{
+                display:none;
+            }
+        }
+
+        .logo{
+            order:1;
+        }
+        .user-info{
+            order:3;
+        }
+        
+    }
+}
